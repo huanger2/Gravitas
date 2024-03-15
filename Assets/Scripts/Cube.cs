@@ -38,12 +38,12 @@ public class Cube : MonoBehaviour
     _____________________________________________________________________________
     */
 
-    public gameObject face1;
-    public gameObject face2;
-    public gameObject face3;
-    public gameObject face4;
-    public gameObject face5;
-    public gameObject face6;
+    public GameObject face1;
+    public GameObject face2;
+    public GameObject face3;
+    public GameObject face4;
+    public GameObject face5;
+    public GameObject face6;
 
     void Start()
     {
