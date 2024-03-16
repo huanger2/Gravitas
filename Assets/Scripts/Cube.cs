@@ -38,21 +38,84 @@ public class Cube : MonoBehaviour
     _____________________________________________________________________________
     */
 
-    public gameObject face1;
-    public gameObject face2;
-    public gameObject face3;
-    public gameObject face4;
-    public gameObject face5;
-    public gameObject face6;
+    #region Face Objects
+    public GameObject face1;
+    public GameObject face2;
+    public GameObject face3;
+    public GameObject face4;
+    public GameObject face5;
+    public GameObject face6;
 
-    void Start()
+    #endregion
+
+    #region Rotation Variables
+    private bool is_rotating;
+    public float rotate_speed;
+    #endregion
+
+
+   #region Unity Functions
+
+    private void Awake()
     {
-        
+        is_rotating = false;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    private void Update() {
+        if (is_rotating){
+            return;
+        }
+        Rotate();
     }
+
+    private void Rotate() {
+        if(Input.GetKeyDown("w")){
+            Debug.Log("Rotate Up");
+            StartCoroutine(RotateHorizontal(Vector3.right, 90, rotate_speed));
+        } else if(Input.GetKeyDown("s")){
+            Debug.Log("Rotate Down");
+            StartCoroutine(RotateHorizontal(Vector3.right, -90, rotate_speed));
+        } else if(Input.GetKeyDown("a")){
+            Debug.Log("Rotate Left");
+            StartCoroutine(RotateHorizontal(Vector3.up, 90, rotate_speed));
+        } else if(Input.GetKeyDown("d")){
+            Debug.Log("Rotate Right");
+            StartCoroutine(RotateHorizontal(Vector3.up, -90, rotate_speed));
+        } 
+    }
+
+    IEnumerator RotateHorizontal(Vector3 axis, float angle, float inTime)
+	{	
+        is_rotating = true;
+        float currentAngle = 0;
+        int sign = (int) Mathf.Sign(angle);
+
+        while (true)
+        {
+            float timestep = inTime * Time.deltaTime;
+            currentAngle += timestep;
+            transform.RotateAround(transform.position, axis, timestep * sign);
+            if (currentAngle >= 90) break;
+            yield return null;
+        }
+
+        var vec = transform.eulerAngles;
+        vec.x = Mathf.Round(vec.x / 90) * 90;
+        vec.y = Mathf.Round(vec.y / 90) * 90;
+        vec.z = Mathf.Round(vec.z / 90) * 90;
+        transform.eulerAngles = vec;        
+        is_rotating = false;
+	}
+
+
+    #endregion
+
+
+    #region Rotation Functions
+
+
+
+
+
+    #endregion
 }
