@@ -45,12 +45,6 @@ public class Cube : MonoBehaviour
     public GameObject face4;
     public GameObject face5;
     public GameObject face6;
-    public GameObject face1;
-    public GameObject face2;
-    public GameObject face3;
-    public GameObject face4;
-    public GameObject face5;
-    public GameObject face6;
 
     #endregion
 
