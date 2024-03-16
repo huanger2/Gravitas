@@ -69,16 +69,16 @@ public class Cube : MonoBehaviour
     }
 
     private void Rotate() {
-        if(Input.GetKeyDown("w")){
+        if(Input.GetKeyDown("t")){
             Debug.Log("Rotate Up");
             StartCoroutine(RotateHorizontal(Vector3.right, 90, rotate_speed));
-        } else if(Input.GetKeyDown("s")){
+        } else if(Input.GetKeyDown("g")){
             Debug.Log("Rotate Down");
             StartCoroutine(RotateHorizontal(Vector3.right, -90, rotate_speed));
-        } else if(Input.GetKeyDown("a")){
+        } else if(Input.GetKeyDown("f")){
             Debug.Log("Rotate Left");
             StartCoroutine(RotateHorizontal(Vector3.up, 90, rotate_speed));
-        } else if(Input.GetKeyDown("d")){
+        } else if(Input.GetKeyDown("h")){
             Debug.Log("Rotate Right");
             StartCoroutine(RotateHorizontal(Vector3.up, -90, rotate_speed));
         } 
