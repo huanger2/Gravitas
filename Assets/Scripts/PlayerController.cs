@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
 	public float movespeed;
 	public float maxspeed;
+	public float initial_gravity;
 
 	Rigidbody playerRB;
 
@@ -13,6 +14,8 @@ public class PlayerController : MonoBehaviour
 	void Awake()
 	{
 		playerRB = gameObject.GetComponent<Rigidbody>();
+        Physics.gravity = new Vector3(0, initial_gravity, 0);
+
 	}
 
 	void Update()
@@ -33,5 +36,11 @@ public class PlayerController : MonoBehaviour
 		}
 
 	}
+
+	#region GravityFunctions
+    public void change_gravity(float gravity_x, float gravity_y) {
+        Physics.gravity = new Vector3(gravity_x, gravity_y, 0);
+    }
+    #endregion
 
 }

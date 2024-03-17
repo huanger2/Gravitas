@@ -8,44 +8,45 @@ public class Cube : MonoBehaviour
     _____________________________________________________________________________
     |                                                                           |
     |   Default                                                                 |   
-    |   2 is top, 4 is bottom.                                                  |
-    |   1 is front POV                                                          |
+    |   1 is top, 3 is bottom.                                                  |
+    |   0 is front POV                                                          |
     |                                                                           |
+    |     4                                                                     |
+    |   0 1 2 3                                                                 |
     |     5                                                                     |
-    |   1 2 3 4                                                                 |
-    |     6                                                                     |
     |                                                                           |
     |   Rotate Left                                                             |
-    |     1               1 -> 6, 5 -> 1, 3 -> 5, 6 -> 3                        |
-    |   6 2 5 4                                                                 |
-    |     3                                                                     |
+    |     0               0 -> 5, 4 -> 0, 2 -> 4, 5 -> 2                        |
+    |   5 1 4 3                                                                 |
+    |     2                                                                     |
     |                                                                           |
     |   Rotate Right                                                            |
-    |     3               1 -> 5, 5 -> 3, 3 -> 6, 6 -> 1                        |
-    |   5 2 6 4                                                                 |
-    |     1                                                                     |
+    |     2               0 -> 4, 4 -> 2, 2 -> 5, 5 -> 0                        |
+    |   4 1 5 3                                                                 |
+    |     0                                                                     |
     |                                                                           |
     |   Rotate Up                                                               |
-    |     5               1 -> 4, 2 -> 1, 3 -> 2, 4 -> 3                        |
-    |   4 1 2 3                                                                 |
-    |     6                                                                     |
+    |     4               0 -> 3, 1 -> 0, 2 -> 1, 3 -> 2                        |
+    |   3 0 1 2                                                                 |
+    |     5                                                                     |
     |                                                                           |
     |   Rotate Down                                                             |
-    |     5               1 -> 2, 2 -> 3, 3 -> 4, 4 -> 1                        |
-    |   2 3 4 1                                                                 |
-    |     6                                                                     |
+    |     4               0 -> 1, 1 -> 2, 2 -> 3, 3 -> 0                        |
+    |   1 2 3 0                                                                 |
+    |     5                                                                     |
     |                                                                           |
     _____________________________________________________________________________
     */
 
     #region Face Objects
-    public GameObject face1;
-    public GameObject face2;
-    public GameObject face3;
-    public GameObject face4;
-    public GameObject face5;
-    public GameObject face6;
+    public GameObject player_0;
+    public GameObject player_1;
+    public GameObject player_2;
+    public GameObject player_3;
+    public GameObject player_4;
+    public GameObject player_5;
 
+    public GameObject[] player_array;
     #endregion
 
     #region Rotation Variables
@@ -58,6 +59,13 @@ public class Cube : MonoBehaviour
 
     private void Awake()
     {
+        player_array = new GameObject[6];
+        player_array[0] = player_0;
+        player_array[1] = player_1;
+        player_array[2] = player_2;
+        player_array[3] = player_3;
+        player_array[4] = player_4;
+        player_array[5] = player_5;
         is_rotating = false;
     }
 

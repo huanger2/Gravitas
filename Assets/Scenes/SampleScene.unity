@@ -989,6 +989,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movespeed: 500
   maxspeed: 500
+  initial_gravity: -9.8
 --- !u!1001 &1461495133
 PrefabInstance:
   m_ObjectHideFlags: 0
