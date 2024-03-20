@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RotationController : MonoBehaviour
 {
-    private Vector3 state;
+    public Vector3 state;
     private int is_up;
     private void Update() {
         if(Input.GetKeyDown("[")){
@@ -20,7 +20,7 @@ public class RotationController : MonoBehaviour
 
     public void Rotate_Flat(int up) {
         is_up = up;
-        state = transform.eulerAngles;
+        state = new Vector3(transform.eulerAngles.x, -90.0f,90.0f);
         Vector3 flat = new Vector3(360.0f,0.0f,0.0f);
         transform.eulerAngles = flat; 
     }
@@ -41,6 +41,10 @@ public class RotationController : MonoBehaviour
         }
         Vector3 up = new Vector3(state.x + 180 * multiplier, state.y, state.z);
         transform.eulerAngles = up; 
+    }
+
+    public void Update_State(float degree) {
+        state = new Vector3(state.x + 90, state.y, state.z);
     }
 
 }
