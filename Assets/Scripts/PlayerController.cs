@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
 	public float movespeed;
 	public float maxspeed;
-	public float initial_gravity;
+	public bool has_gravity;
 
 	Rigidbody playerRB;
 
@@ -14,7 +14,6 @@ public class PlayerController : MonoBehaviour
 	void Awake()
 	{
 		playerRB = gameObject.GetComponent<Rigidbody>();
-        Physics.gravity = new Vector3(0, initial_gravity, 0);
 
 	}
 
@@ -22,24 +21,40 @@ public class PlayerController : MonoBehaviour
 	{
 		//Movement
 		float MoveHor = Input.GetAxisRaw("Horizontal");
-		Vector2 movement = new Vector2(MoveHor * movespeed, 0);
+		Vector3 movement = new Vector3(MoveHor * movespeed, 0, 0);
 		movement = movement * Time.deltaTime;
 
 		playerRB.AddForce(movement);
 		if (playerRB.velocity.x > maxspeed)
 		{
-			playerRB.velocity = new Vector2(maxspeed, playerRB.velocity.y);
+			playerRB.velocity = new Vector3(maxspeed, 0, playerRB.velocity.z);
 		}
 		if (playerRB.velocity.x < -maxspeed)
 		{
-			playerRB.velocity = new Vector2(-maxspeed, playerRB.velocity.y);
+			playerRB.velocity = new Vector3(-maxspeed, 0, playerRB.velocity.z);
+		}
+
+		if (!has_gravity) {
+			float MoveVert = Input.GetAxisRaw("Vertical");
+			Vector3 movementy = new Vector3(0, 0, MoveVert * movespeed);
+			movementy = movementy * Time.deltaTime;
+
+			playerRB.AddForce(movementy);
+			if (playerRB.velocity.z > maxspeed)
+			{
+				playerRB.velocity = new Vector3(playerRB.velocity.x, 0, maxspeed);
+			}
+			if (playerRB.velocity.z < -maxspeed)
+			{
+				playerRB.velocity = new Vector3(playerRB.velocity.x, 0, -maxspeed);
+			}
 		}
 
 	}
 
 	#region GravityFunctions
-    public void change_gravity(float gravity_x, float gravity_y) {
-        Physics.gravity = new Vector3(gravity_x, gravity_y, 0);
+    public void change_gravity(bool gravity) {
+        has_gravity = gravity;
     }
     #endregion
 
