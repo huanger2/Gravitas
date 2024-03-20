@@ -86,6 +86,7 @@ public class Cube : MonoBehaviour
             player_array[1] = temp;
             player_array[3] = temp1;
             StartCoroutine(RotateHorizontal(Vector3.right, 90, rotate_speed));
+            Rotate_Up();
         } else if(Input.GetKeyDown("g")){
             Debug.Log("Rotate Down");
             player_array[0] = player_array[1];
@@ -93,6 +94,7 @@ public class Cube : MonoBehaviour
             player_array[3] = temp;
             player_array[1] = temp1;
             StartCoroutine(RotateHorizontal(Vector3.right, -90, rotate_speed));
+            Rotate_Down();
         } else if(Input.GetKeyDown("f")){
             Debug.Log("Rotate Left");
             player_array[0] = player_array[5];
@@ -112,16 +114,16 @@ public class Cube : MonoBehaviour
 
     private void Rotate_Up() {
         if(player_array[0] != null) {
-            player_array[0].GetComponent<RotationController>().Rotate_Up(270.0f);
+            player_array[0].GetComponent<RotationController>().Rotate_Down(0);
         } 
         if(player_array[1] != null) {
-            player_array[1].GetComponent<RotationController>().Rotate_Flat();
+            player_array[1].GetComponent<RotationController>().Rotate_Flat(0);
         } 
         if(player_array[2] != null) {
-            player_array[2].GetComponent<RotationController>().Rotate_Up(270.0f);
+            player_array[2].GetComponent<RotationController>().Rotate_Up(0);
         } 
         if(player_array[3] != null) {
-            player_array[3].GetComponent<RotationController>().Rotate_Flat();
+            player_array[3].GetComponent<RotationController>().Rotate_Flat(0);
         } 
         if(player_array[4] != null) {
             player_array[4].GetComponent<RotationController>().Rotate_Gravity(-90.0f);
@@ -134,16 +136,16 @@ public class Cube : MonoBehaviour
 
     private void Rotate_Down() {
         if(player_array[0] != null) {
-            player_array[0].GetComponent<RotationController>().Rotate_Up(270.0f);
+            player_array[0].GetComponent<RotationController>().Rotate_Up(1);
         } 
         if(player_array[1] != null) {
-            player_array[1].GetComponent<RotationController>().Rotate_Flat();
+            player_array[1].GetComponent<RotationController>().Rotate_Flat(1);
         } 
         if(player_array[2] != null) {
-            player_array[2].GetComponent<RotationController>().Rotate_Up(270.0f);
+            player_array[2].GetComponent<RotationController>().Rotate_Down(1);
         } 
         if(player_array[3] != null) {
-            player_array[3].GetComponent<RotationController>().Rotate_Flat();
+            player_array[3].GetComponent<RotationController>().Rotate_Flat(1);
         } 
         if(player_array[4] != null) {
             player_array[4].GetComponent<RotationController>().Rotate_Gravity(90.0f);
