@@ -1280,6 +1280,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1892041761575110015, guid: 6c99b3e3dc1de0b4ba4949ece9367fb2, type: 3}
+      propertyPath: player_0
+      value: 
+      objectReference: {fileID: 1984006062}
     - target: {fileID: 3422340043367262414, guid: 6c99b3e3dc1de0b4ba4949ece9367fb2, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0
@@ -1366,6 +1370,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1984006063}
+  - component: {fileID: 1984006064}
   m_Layer: 6
   m_Name: 2D Scene
   m_TagString: Untagged
@@ -1381,7 +1386,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1984006062}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: -0.7071068}
+  m_LocalRotation: {x: 0.70710677, y: 0, z: 0, w: -0.70710677}
   m_LocalPosition: {x: 400, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1395,7 +1400,19 @@ Transform:
   - {fileID: 561119729}
   - {fileID: 202233724}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 270, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 270, y: -90, z: 90}
+--- !u!114 &1984006064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1984006062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a19191d9cb12454a9fd2fdc7c3250b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2040223785
 GameObject:
   m_ObjectHideFlags: 0
