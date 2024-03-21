@@ -8,7 +8,12 @@ public class PlayerController : MonoBehaviour
 	public float maxspeed;
 	public bool has_gravity;
 
+	#region Exit variables
 	public bool exited = false;
+
+	public CapsuleCollider exit;
+
+	#endregion
 
 	Rigidbody playerRB;
 
@@ -62,7 +67,9 @@ public class PlayerController : MonoBehaviour
 
 	#region ExitFunction
 	public void OnTriggerEnter(Collider other) {
-		exited = true;
+		if (other == exit) {
+			exited = true;
+		}
 	}
 
 	#endregion

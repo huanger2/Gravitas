@@ -128,6 +128,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 41070690452893912, guid: 83b101bf62bc94e0d908256a78526a4d, type: 3}
   m_PrefabInstance: {fileID: 1591343407}
   m_PrefabAsset: {fileID: 0}
+--- !u!136 &244403423 stripped
+CapsuleCollider:
+  m_CorrespondingSourceObject: {fileID: 5816848655004550369, guid: 83b101bf62bc94e0d908256a78526a4d, type: 3}
+  m_PrefabInstance: {fileID: 1591343407}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &278897065
 GameObject:
   m_ObjectHideFlags: 0
@@ -292,6 +297,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: 2D Scene (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2793784575521784823, guid: 31fdf3fe1b4bcf1448d4d70748de10c1, type: 3}
+      propertyPath: exit
+      value: 
+      objectReference: {fileID: 1103913875}
     - target: {fileID: 2793784575521784823, guid: 31fdf3fe1b4bcf1448d4d70748de10c1, type: 3}
       propertyPath: has_gravity
       value: 1
@@ -718,6 +727,11 @@ GameObject:
 --- !u!4 &1103913874 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 41070690452893912, guid: 83b101bf62bc94e0d908256a78526a4d, type: 3}
+  m_PrefabInstance: {fileID: 798072646}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &1103913875 stripped
+CapsuleCollider:
+  m_CorrespondingSourceObject: {fileID: 5816848655004550369, guid: 83b101bf62bc94e0d908256a78526a4d, type: 3}
   m_PrefabInstance: {fileID: 798072646}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1156689948
@@ -1283,7 +1297,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1637012927}
         m_TargetAssemblyTypeName: Cube, Assembly-CSharp
-        m_MethodName: Rdown
+        m_MethodName: Rright
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1502,6 +1516,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: 2D Scene
       objectReference: {fileID: 0}
+    - target: {fileID: 2793784575521784823, guid: 31fdf3fe1b4bcf1448d4d70748de10c1, type: 3}
+      propertyPath: exit
+      value: 
+      objectReference: {fileID: 244403423}
     - target: {fileID: 2793784575521784823, guid: 31fdf3fe1b4bcf1448d4d70748de10c1, type: 3}
       propertyPath: has_gravity
       value: 1
