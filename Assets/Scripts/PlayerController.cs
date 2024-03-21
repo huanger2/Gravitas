@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
 	public float maxspeed;
 	public bool has_gravity;
 
+	public bool exited = false;
+
 	Rigidbody playerRB;
 
 
@@ -57,5 +59,12 @@ public class PlayerController : MonoBehaviour
         has_gravity = gravity;
     }
     #endregion
+
+	#region ExitFunction
+	public void OnTriggerEnter(Collider other) {
+		exited = true;
+	}
+
+	#endregion
 
 }

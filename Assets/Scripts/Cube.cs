@@ -203,4 +203,61 @@ public class Cube : MonoBehaviour
 
 
     #endregion
+
+    #region UI Commands
+    public void Rup() {
+        GameObject temp = player_array[0];
+        GameObject temp1 = player_array[2];
+        Debug.Log("Rotate Up");
+        player_array[0] = player_array[3];
+        player_array[2] = player_array[1];
+        player_array[1] = temp;
+        player_array[3] = temp1;
+        StartCoroutine(RotateHorizontal(Vector3.right, 90, rotate_speed));
+        Rotate_Up();
+    }
+    public void Rdown() {
+        GameObject temp = player_array[0];
+        GameObject temp1 = player_array[2];
+        Debug.Log("Rotate Down");
+        player_array[0] = player_array[1];
+        player_array[2] = player_array[3];
+        player_array[3] = temp;
+        player_array[1] = temp1;
+        StartCoroutine(RotateHorizontal(Vector3.right, -90, rotate_speed));
+        Rotate_Down();
+    }
+    public void Rleft() {
+        GameObject temp = player_array[0];
+        GameObject temp1 = player_array[2];
+        Debug.Log("Rotate Left");
+        player_array[0] = player_array[5];
+        player_array[2] = player_array[4];
+        player_array[4] = temp;
+        player_array[5] = temp1;
+        if (player_array[1] != null) {
+            player_array[1].GetComponent<RotationController>().Update_State(90.0f);
+        }
+        if (player_array[3] != null) {
+            player_array[3].GetComponent<RotationController>().Update_State(90.0f);
+        }
+        StartCoroutine(RotateHorizontal(Vector3.up, 90, rotate_speed));
+    }
+    public void Rright() {
+        GameObject temp = player_array[0];
+        GameObject temp1 = player_array[2];
+        Debug.Log("Rotate Right");
+        player_array[0] = player_array[4];
+        player_array[2] = player_array[5];
+        player_array[4] = temp1;
+        player_array[5] = temp;
+        if (player_array[1] != null) {
+            player_array[1].GetComponent<RotationController>().Update_State(-90.0f);
+        }
+        if (player_array[3] != null) {
+            player_array[3].GetComponent<RotationController>().Update_State(-90.0f);
+        }
+        StartCoroutine(RotateHorizontal(Vector3.up, -90, rotate_speed));
+    }
+    #endregion
 }
