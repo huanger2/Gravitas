@@ -106,7 +106,7 @@ public class Cube : MonoBehaviour
                 //player_array[1].GetComponent<RotationController>().Rotate_Gravity(-90.0f);
             }
             if (player_array[3] != null) {
-                player_array[3].GetComponent<RotationController>().Update_State(-90.0f);
+                player_array[3].GetComponent<RotationController>().Update_State(90.0f);
             }
             StartCoroutine(RotateHorizontal(Vector3.up, 90, rotate_speed));
         } else if(Input.GetKeyDown("h")){
@@ -119,7 +119,7 @@ public class Cube : MonoBehaviour
                 player_array[1].GetComponent<RotationController>().Update_State(90.0f);
             }
             if (player_array[3] != null) {
-                player_array[3].GetComponent<RotationController>().Update_State(90.0f);
+                player_array[3].GetComponent<RotationController>().Update_State(-90.0f);
             }
             StartCoroutine(RotateHorizontal(Vector3.up, -90, rotate_speed));
         } 
