@@ -69,7 +69,19 @@ public class PlayerController : MonoBehaviour
 	public void OnTriggerEnter(Collider other) {
 		if (other == exit) {
 			exited = true;
+			Debug.Log("Exited");
 		}
+	}
+
+	public void OnTriggerExit(Collider other) {
+		if (other == exit) {
+			exited = false;
+			Debug.Log("No Longer Exited");
+		}
+	}
+
+	public bool is_exit() {
+		return exited;
 	}
 
 	#endregion

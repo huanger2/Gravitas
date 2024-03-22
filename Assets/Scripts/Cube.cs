@@ -80,7 +80,7 @@ public class Cube : MonoBehaviour
         GameObject temp = player_array[0];
         GameObject temp1 = player_array[2];
         if(Input.GetKeyDown("t")){
-            Debug.Log("Rotate Up");
+            //Debug.Log("Rotate Up");
             player_array[0] = player_array[3];
             player_array[2] = player_array[1];
             player_array[1] = temp;
@@ -88,7 +88,7 @@ public class Cube : MonoBehaviour
             StartCoroutine(RotateHorizontal(Vector3.right, 90, rotate_speed));
             Rotate_Up();
         } else if(Input.GetKeyDown("g")){
-            Debug.Log("Rotate Down");
+            //Debug.Log("Rotate Down");
             player_array[0] = player_array[1];
             player_array[2] = player_array[3];
             player_array[3] = temp;
@@ -96,20 +96,21 @@ public class Cube : MonoBehaviour
             StartCoroutine(RotateHorizontal(Vector3.right, -90, rotate_speed));
             Rotate_Down();
         } else if(Input.GetKeyDown("f")){
-            Debug.Log("Rotate Left");
+            //Debug.Log("Rotate Left");
             player_array[0] = player_array[5];
             player_array[2] = player_array[4];
             player_array[4] = temp;
             player_array[5] = temp1;
             if (player_array[1] != null) {
                 player_array[1].GetComponent<RotationController>().Update_State(-90.0f);
+                //player_array[1].GetComponent<RotationController>().Rotate_Gravity(-90.0f);
             }
             if (player_array[3] != null) {
                 player_array[3].GetComponent<RotationController>().Update_State(-90.0f);
             }
             StartCoroutine(RotateHorizontal(Vector3.up, 90, rotate_speed));
         } else if(Input.GetKeyDown("h")){
-            Debug.Log("Rotate Right");
+            //Debug.Log("Rotate Right");
             player_array[0] = player_array[4];
             player_array[2] = player_array[5];
             player_array[4] = temp1;
@@ -208,7 +209,7 @@ public class Cube : MonoBehaviour
     public void Rup() {
         GameObject temp = player_array[0];
         GameObject temp1 = player_array[2];
-        Debug.Log("Rotate Up");
+        //Debug.Log("Rotate Up");
         player_array[0] = player_array[3];
         player_array[2] = player_array[1];
         player_array[1] = temp;
@@ -219,7 +220,7 @@ public class Cube : MonoBehaviour
     public void Rdown() {
         GameObject temp = player_array[0];
         GameObject temp1 = player_array[2];
-        Debug.Log("Rotate Down");
+        //Debug.Log("Rotate Down");
         player_array[0] = player_array[1];
         player_array[2] = player_array[3];
         player_array[3] = temp;
@@ -230,7 +231,7 @@ public class Cube : MonoBehaviour
     public void Rleft() {
         GameObject temp = player_array[0];
         GameObject temp1 = player_array[2];
-        Debug.Log("Rotate Left");
+        //Debug.Log("Rotate Left");
         player_array[0] = player_array[5];
         player_array[2] = player_array[4];
         player_array[4] = temp;
@@ -246,7 +247,7 @@ public class Cube : MonoBehaviour
     public void Rright() {
         GameObject temp = player_array[0];
         GameObject temp1 = player_array[2];
-        Debug.Log("Rotate Right");
+        //Debug.Log("Rotate Right");
         player_array[0] = player_array[4];
         player_array[2] = player_array[5];
         player_array[4] = temp1;
