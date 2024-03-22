@@ -50,7 +50,7 @@ public class RotationController : MonoBehaviour
     }
 
     public void Update_State(float degree) {
-        state = new Vector3(state.x + 90, state.y, state.z);
+        state = new Vector3(state.x + degree, state.y, state.z);
     }
 
 }
