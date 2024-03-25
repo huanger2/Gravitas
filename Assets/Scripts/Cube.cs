@@ -130,19 +130,21 @@ public class Cube : MonoBehaviour
             player_array[0].GetComponent<RotationController>().Rotate_Down(0);
         } 
         if(player_array[1] != null) {
+            Debug.Log("Rotate Flat X:" + player_array[1].transform.eulerAngles.x);
             player_array[1].GetComponent<RotationController>().Rotate_Flat(0);
         } 
         if(player_array[2] != null) {
             player_array[2].GetComponent<RotationController>().Rotate_Up(0);
         } 
         if(player_array[3] != null) {
+            Debug.Log("Rotate Flat X:" + player_array[3].transform.eulerAngles.x);
             player_array[3].GetComponent<RotationController>().Rotate_Flat(0);
         } 
         if(player_array[4] != null) {
-            player_array[4].GetComponent<RotationController>().Rotate_Gravity(-90.0f);
+            player_array[4].GetComponent<RotationController>().Rotate_Gravity(90.0f);
         } 
         if(player_array[5] != null) {
-            player_array[5].GetComponent<RotationController>().Rotate_Gravity(90.0f);
+            player_array[5].GetComponent<RotationController>().Rotate_Gravity(-90.0f);
         } 
     }
 
@@ -161,10 +163,12 @@ public class Cube : MonoBehaviour
             player_array[3].GetComponent<RotationController>().Rotate_Flat(1);
         } 
         if(player_array[4] != null) {
-            player_array[4].GetComponent<RotationController>().Rotate_Gravity(90.0f);
+            player_array[4].GetComponent<RotationController>().Rotate_Gravity(-90.0f);
+            //Debug.Log(player_array[4].transform.eulerAngles.x);
+
         } 
         if(player_array[5] != null) {
-            player_array[5].GetComponent<RotationController>().Rotate_Gravity(-90.0f);
+            player_array[5].GetComponent<RotationController>().Rotate_Gravity(90.0f);
         } 
     }
 
