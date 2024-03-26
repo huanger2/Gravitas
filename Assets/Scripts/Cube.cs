@@ -83,7 +83,7 @@ public class Cube : MonoBehaviour
 
     private void Update() {
         if (Input.GetKeyDown("e")) {
-            Get_Closest();
+            Camera_dir();
         }
         if (is_rotating){
             return;
@@ -366,6 +366,12 @@ public class Cube : MonoBehaviour
 
     private double Euclidean_Dist(Vector3 a, Vector3 b) {
         return  Math.Sqrt((Math.Pow(a.x - b.x, 2) + Math.Pow(a.y - a.y, 2) + Math.Pow(a.z - b.z, 2)));
+    }
+
+    private int Camera_dir() {
+        Vector3 cam_up = cam.transform.up;;
+        Debug.Log(cam_up);
+        return 0;
     }
     #endregion
 
