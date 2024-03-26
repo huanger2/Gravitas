@@ -94,90 +94,137 @@ public class Cube : MonoBehaviour
 
     #region Rotation Functions
     private void Rotate() {
-        GameObject temp = player_array[0];
-        GameObject temp1 = player_array[2];
         if(Input.GetKeyDown("t")){
-            //Debug.Log("Rotate Up");
-            player_array[0] = player_array[3];
-            player_array[2] = player_array[1];
-            player_array[1] = temp;
-            player_array[3] = temp1;
-            StartCoroutine(RotateHorizontal(Vector3.right, 90, rotate_speed));
-            Rotate_Up();
+            R_UP_DIR();
         } else if(Input.GetKeyDown("g")){
-            //Debug.Log("Rotate Down");
-            player_array[0] = player_array[1];
-            player_array[2] = player_array[3];
-            player_array[3] = temp;
-            player_array[1] = temp1;
-            StartCoroutine(RotateHorizontal(Vector3.right, -90, rotate_speed));
-            Rotate_Down();
+            R_DOWN_DIR();
         } else if(Input.GetKeyDown("f")){
-            //Debug.Log("Rotate Left");
-            player_array[0] = player_array[5];
-            player_array[2] = player_array[4];
-            player_array[4] = temp;
-            player_array[5] = temp1;
-            if (player_array[1] != null) {
-                player_array[1].GetComponent<RotationController>().Update_State(-90.0f);
-                //player_array[1].GetComponent<RotationController>().Rotate_Gravity(-90.0f);
-            }
-            if (player_array[3] != null) {
-                player_array[3].GetComponent<RotationController>().Update_State(90.0f);
-            }
-            StartCoroutine(RotateHorizontal(Vector3.up, 90, rotate_speed));
+            R_LEFT();
         } else if(Input.GetKeyDown("h")){
-            //Debug.Log("Rotate Right");
-            player_array[0] = player_array[4];
-            player_array[2] = player_array[5];
-            player_array[4] = temp1;
-            player_array[5] = temp;
-            if (player_array[1] != null) {
-                player_array[1].GetComponent<RotationController>().Update_State(90.0f);
-            }
-            if (player_array[3] != null) {
-                player_array[3].GetComponent<RotationController>().Update_State(-90.0f);
-            }
-            StartCoroutine(RotateHorizontal(Vector3.up, -90, rotate_speed));
-        } else if(Input.GetKeyDown("[")){
-            //Debug.Log("Rotate Up Left");
-            temp = player_array[1];
-            temp1 = player_array[3];
-            player_array[1] = player_array[5];
-            player_array[3] = player_array[4];
-            player_array[4] = temp;
-            player_array[5] = temp1;
-            StartCoroutine(RotateHorizontal(new Vector3(0,0,1), 90, rotate_speed));
-            Rotate_Up_Left();
-
-
-        } else if(Input.GetKeyDown("]")){
-            //Debug.Log("Rotate Up Right");
-            temp = player_array[1];
-            temp1 = player_array[3];
-            player_array[1] = player_array[4];
-            player_array[3] = player_array[5];
-            player_array[4] = temp1;
-            player_array[5] = temp;
-            StartCoroutine(RotateHorizontal(new Vector3(0,0,1), -90, rotate_speed));
-            Rotate_Up_Right();
-
-            
+            R_RIGHT();
         }
     }
+
+    private void R_UP_DIR() {
+        int closest = Get_Closest();
+        if (closest == 0) {
+            R_UP();
+        } else if (closest == 4) {
+            R_UPR();
+        } else if (closest == 2) {
+            R_DOWN();
+        } else if (closest == 5) {
+            R_UPL();
+        }
+    }
+
+    private void R_DOWN_DIR() {
+        int closest = Get_Closest();
+        if (closest == 0) {
+            R_DOWN();
+        } else if (closest == 4) {
+            R_UPL();
+        } else if (closest == 2) {
+            R_UP();
+        } else if (closest == 5) {
+            R_UPR();
+        }
+    }
+
+    private void R_LEFT() {
+        GameObject temp = player_array[0];
+        GameObject temp1 = player_array[2];
+        player_array[0] = player_array[5];
+        player_array[2] = player_array[4];
+        player_array[4] = temp;
+        player_array[5] = temp1;
+        if (player_array[1] != null) {
+            player_array[1].GetComponent<RotationController>().Update_State(-90.0f);
+        }
+        if (player_array[3] != null) {
+            player_array[3].GetComponent<RotationController>().Update_State(90.0f);
+        }
+        StartCoroutine(RotateHorizontal(Vector3.up, 90, rotate_speed));
+    }
+
+    private void R_RIGHT() {
+        GameObject temp = player_array[0];
+        GameObject temp1 = player_array[2];
+        player_array[0] = player_array[4];
+        player_array[2] = player_array[5];
+        player_array[4] = temp1;
+        player_array[5] = temp;
+        if (player_array[1] != null) {
+            player_array[1].GetComponent<RotationController>().Update_State(90.0f);
+        }
+        if (player_array[3] != null) {
+            player_array[3].GetComponent<RotationController>().Update_State(-90.0f);
+        }
+        StartCoroutine(RotateHorizontal(Vector3.up, -90, rotate_speed));
+    }
+
+
+    private void R_UP() {
+        Debug.Log("R_UP");
+        GameObject temp = player_array[0];
+        GameObject temp1 = player_array[2];
+        player_array[0] = player_array[3];
+        player_array[2] = player_array[1];
+        player_array[1] = temp;
+        player_array[3] = temp1;
+        StartCoroutine(RotateHorizontal(Vector3.right, 90, rotate_speed));
+        Rotate_Up();
+    }
+
+    private void R_DOWN() {
+        Debug.Log("R_DOWN");
+        GameObject temp = player_array[0];
+        GameObject temp1 = player_array[2];
+        player_array[0] = player_array[1];
+        player_array[2] = player_array[3];
+        player_array[3] = temp;
+        player_array[1] = temp1;
+        StartCoroutine(RotateHorizontal(Vector3.right, -90, rotate_speed));
+        Rotate_Down();
+    }
+
+    private void R_UPL() {
+        Debug.Log("R_UPL");
+        GameObject temp = player_array[1];
+        GameObject temp1 = player_array[3];
+        player_array[1] = player_array[5];
+        player_array[3] = player_array[4];
+        player_array[4] = temp;
+        player_array[5] = temp1;
+        StartCoroutine(RotateHorizontal(new Vector3(0,0,1), 90, rotate_speed));
+        Rotate_Up_Left();
+    }
+
+    private void R_UPR() {
+        Debug.Log("R_UPR");
+        GameObject temp = player_array[1];
+        GameObject temp1 = player_array[3];
+        player_array[1] = player_array[4];
+        player_array[3] = player_array[5];
+        player_array[4] = temp1;
+        player_array[5] = temp;
+        StartCoroutine(RotateHorizontal(new Vector3(0,0,1), -90, rotate_speed));
+        Rotate_Up_Right();
+    }
+
 
     private void Rotate_Up() {
         if(player_array[0] != null) {
             player_array[0].GetComponent<RotationController>().Rotate_Up(0);
         } 
         if(player_array[1] != null) {
-            player_array[1].GetComponent<RotationController>().Rotate_Flat(0);
+            player_array[1].GetComponent<RotationController>().Rotate_Top(0);
         } 
         if(player_array[2] != null) {
             player_array[2].GetComponent<RotationController>().Rotate_Up(0);
         } 
         if(player_array[3] != null) {
-            player_array[3].GetComponent<RotationController>().Rotate_Flat(0);
+            player_array[3].GetComponent<RotationController>().Rotate_Bottom(0);
         } 
         if(player_array[4] != null) {
             player_array[4].GetComponent<RotationController>().Rotate_Gravity(90.0f);
@@ -193,13 +240,13 @@ public class Cube : MonoBehaviour
             player_array[0].GetComponent<RotationController>().Rotate_Up(1);
         } 
         if(player_array[1] != null) {
-            player_array[1].GetComponent<RotationController>().Rotate_Flat(1);
+            player_array[1].GetComponent<RotationController>().Rotate_Top(1);
         } 
         if(player_array[2] != null) {
             player_array[2].GetComponent<RotationController>().Rotate_Up(1);
         } 
         if(player_array[3] != null) {
-            player_array[3].GetComponent<RotationController>().Rotate_Flat(1);
+            player_array[3].GetComponent<RotationController>().Rotate_Bottom(1);
         } 
         if(player_array[4] != null) {
             player_array[4].GetComponent<RotationController>().Rotate_Gravity(-90.0f);
@@ -214,13 +261,13 @@ public class Cube : MonoBehaviour
             player_array[0].GetComponent<RotationController>().Rotate_Gravity(90.0f);
         } 
         if(player_array[1] != null) {
-            player_array[1].GetComponent<RotationController>().Rotate_Flat(2);
+            player_array[1].GetComponent<RotationController>().Rotate_Top(2);
         } 
         if(player_array[2] != null) {
             player_array[2].GetComponent<RotationController>().Rotate_Gravity(-90.0f);
         } 
         if(player_array[3] != null) {
-            player_array[3].GetComponent<RotationController>().Rotate_Flat(2);
+            player_array[3].GetComponent<RotationController>().Rotate_Bottom(2);
         } 
         if(player_array[4] != null) {
             player_array[4].GetComponent<RotationController>().Rotate_Up(2);
@@ -235,13 +282,13 @@ public class Cube : MonoBehaviour
             player_array[0].GetComponent<RotationController>().Rotate_Gravity(-90.0f);
         } 
         if(player_array[1] != null) {
-            player_array[1].GetComponent<RotationController>().Rotate_Flat(3);
+            player_array[1].GetComponent<RotationController>().Rotate_Top(3);
         } 
         if(player_array[2] != null) {
             player_array[2].GetComponent<RotationController>().Rotate_Gravity(90.0f);
         } 
         if(player_array[3] != null) {
-            player_array[3].GetComponent<RotationController>().Rotate_Flat(3);
+            player_array[3].GetComponent<RotationController>().Rotate_Bottom(3);
         } 
         if(player_array[4] != null) {
             player_array[4].GetComponent<RotationController>().Rotate_Up(3);
@@ -276,13 +323,10 @@ public class Cube : MonoBehaviour
     #endregion
 
     #region Camera Functions
-    private void Get_Closest() {
+    private int Get_Closest() {
         Mesh mesh = GetComponent<MeshFilter>().mesh;
         Vector3[] vertices = mesh.vertices;
         Vector3 cam_location = cam.transform.position;
-        // for(int i = 0; i<4; i ++) {
-        //     Debug.Log(vertices[i]);
-        // }
         SortedList<double, Vector3> distanceMap = new SortedList<double, Vector3>();
         foreach (Vector3 point in vertices) {
             double distance = Euclidean_Dist(point, cam_location);
@@ -290,13 +334,34 @@ public class Cube : MonoBehaviour
         }
 
         List<Vector3> nearestPoints = new List<Vector3>();
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 2; i++) {
             nearestPoints.Add(distanceMap.Values[i]);
-            // Debug.Log(distanceMap.Values[i]);
+            //Debug.Log(distanceMap.Values[i]);
         }
-        
-
-
+        Vector3 point1 = new Vector3(-0.5f, -0.5f, -0.5f);
+        Vector3 point2 = new Vector3(0.5f, 0.5f, -0.5f);
+        Vector3 point3 = new Vector3(0.5f, -0.5f, 0.5f);
+        Vector3 point4 = new Vector3(-0.5f, 0.5f, 0.5f);
+        if (nearestPoints.Contains(point1) && nearestPoints.Contains(point4)) {
+            //Debug.Log("4");
+            return 4;
+        } else if (nearestPoints.Contains(point1) && nearestPoints.Contains(point2)) {
+            //Debug.Log("0");
+            return 0;
+        } else if (nearestPoints.Contains(point2) && nearestPoints.Contains(point3)) {
+            //Debug.Log("5");
+            return 5;
+        } else if (nearestPoints.Contains(point3) && nearestPoints.Contains(point4)) {
+           // Debug.Log("2");
+            return 2;
+        } else if (nearestPoints.Contains(point1) && nearestPoints.Contains(point3)) {
+            Debug.Log("3");
+            return 3;
+        } else if (nearestPoints.Contains(point2) && nearestPoints.Contains(point4)) {
+            Debug.Log("1");
+            return 1;
+        }
+        return 100;
     }
 
     private double Euclidean_Dist(Vector3 a, Vector3 b) {
@@ -305,62 +370,30 @@ public class Cube : MonoBehaviour
     #endregion
 
 
-
-
     #region UI Commands
     public void Rup() {
-        GameObject temp = player_array[0];
-        GameObject temp1 = player_array[2];
-        //Debug.Log("Rotate Up");
-        player_array[0] = player_array[3];
-        player_array[2] = player_array[1];
-        player_array[1] = temp;
-        player_array[3] = temp1;
-        StartCoroutine(RotateHorizontal(Vector3.right, 90, rotate_speed));
-        Rotate_Up();
+        if (is_rotating){
+            return;
+        }
+        R_UP_DIR();
     }
     public void Rdown() {
-        GameObject temp = player_array[0];
-        GameObject temp1 = player_array[2];
-        //Debug.Log("Rotate Down");
-        player_array[0] = player_array[1];
-        player_array[2] = player_array[3];
-        player_array[3] = temp;
-        player_array[1] = temp1;
-        StartCoroutine(RotateHorizontal(Vector3.right, -90, rotate_speed));
-        Rotate_Down();
+        if (is_rotating){
+            return;
+        }
+        R_DOWN_DIR();
     }
     public void Rleft() {
-        GameObject temp = player_array[0];
-        GameObject temp1 = player_array[2];
-        //Debug.Log("Rotate Left");
-        player_array[0] = player_array[5];
-        player_array[2] = player_array[4];
-        player_array[4] = temp;
-        player_array[5] = temp1;
-        if (player_array[1] != null) {
-            player_array[1].GetComponent<RotationController>().Update_State(90.0f);
+        if (is_rotating){
+            return;
         }
-        if (player_array[3] != null) {
-            player_array[3].GetComponent<RotationController>().Update_State(90.0f);
-        }
-        StartCoroutine(RotateHorizontal(Vector3.up, 90, rotate_speed));
+        R_LEFT();
     }
     public void Rright() {
-        GameObject temp = player_array[0];
-        GameObject temp1 = player_array[2];
-        //Debug.Log("Rotate Right");
-        player_array[0] = player_array[4];
-        player_array[2] = player_array[5];
-        player_array[4] = temp1;
-        player_array[5] = temp;
-        if (player_array[1] != null) {
-            player_array[1].GetComponent<RotationController>().Update_State(-90.0f);
+        if (is_rotating){
+            return;
         }
-        if (player_array[3] != null) {
-            player_array[3].GetComponent<RotationController>().Update_State(-90.0f);
-        }
-        StartCoroutine(RotateHorizontal(Vector3.up, -90, rotate_speed));
+        R_RIGHT();  
     }
     #endregion
 }

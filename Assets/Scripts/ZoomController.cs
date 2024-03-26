@@ -7,7 +7,6 @@ public class ZoomController : MonoBehaviour
     public float ZoomChange;
     public float SmoothChange;
     public float Minsize, Maxsize;
-
     private Camera cam;
     public void Start() {
         cam = GetComponent<Camera>();
@@ -16,14 +15,10 @@ public class ZoomController : MonoBehaviour
     private void Update() {
         if (Input.mouseScrollDelta.y > 0) {
             cam.fieldOfView--;
-            //Debug.Log("zoom in");
         }
-
         if (Input.mouseScrollDelta.y < 0) {
             cam.fieldOfView++;
-            //Debug.Log("zoom out");
         }
-
         cam.orthographicSize = Mathf.Clamp(cam.orthographicSize, Minsize, Maxsize);
     }
 }

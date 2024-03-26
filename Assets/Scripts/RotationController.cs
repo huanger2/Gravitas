@@ -7,22 +7,28 @@ public class RotationController : MonoBehaviour
     public GameObject player;
     public Vector3 state;
     public int is_up;
+    public int is_top;
 
     public float x_value;
     private void Update() {
-        // if(Input.GetKeyDown("[")){
-        //     Rotate_Gravity(90.0f);
-        // } else if(Input.GetKeyDown("]")){
-        //     Rotate_Gravity(-90.0f);
-        // }
     }
     public void Rotate_Gravity(float degree) {
         x_value = x_value + degree;
         transform.eulerAngles = new Vector3(x_value, -90, 90);
     }
 
-    public void Rotate_Flat(int up) {
+    public void Rotate_Top(int up) {
         is_up = up;
+        is_top = 1;
+        state = new Vector3(x_value, -90.0f, 90.0f);
+        Vector3 flat = new Vector3(360.0f,0.0f,0.0f);
+        transform.eulerAngles = flat;
+        player.GetComponent<PlayerController>().change_gravity(false);
+    }
+
+    public void Rotate_Bottom(int up) {
+        is_up = up;
+        is_top = -1;
         state = new Vector3(x_value, -90.0f, 90.0f);
         Vector3 flat = new Vector3(360.0f,0.0f,0.0f);
         transform.eulerAngles = flat;
@@ -37,9 +43,9 @@ public class RotationController : MonoBehaviour
             } else if (last == 1) {
                 multiplier = 0;
             } else if (last == 2) {
-                multiplier = 1;
+                multiplier = 1 * is_top;
             } else {
-                multiplier = -1;
+                multiplier = -1 * is_top;
             }
         } else if (is_up == 1) {
             if (last == 0) {
@@ -47,15 +53,15 @@ public class RotationController : MonoBehaviour
             } else if (last == 1) {
                 multiplier = 2;
             } else if (last == 2) {
-                multiplier = 1;
+                multiplier = -1 * is_top;
             } else {
-                multiplier = -1;
+                multiplier = 1 * is_top;
             }
         } else if (is_up == 2) {
             if (last == 0) {
-                multiplier = 1;
+                multiplier = -1 * is_top;
             } else if (last == 1) {
-                multiplier = -1;
+                multiplier = 1 * is_top;
             } else if (last == 2) {
                 multiplier = 2;
             } else {
@@ -63,9 +69,9 @@ public class RotationController : MonoBehaviour
             }
         } else if (is_up == 3) {
             if (last == 0) {
-                multiplier = 1;
+                multiplier = 1 * is_top;
             } else if (last == 1) {
-                multiplier = -1;
+                multiplier = -1 * is_top;
             } else if (last == 2) {
                 multiplier = 0;
             } else {
