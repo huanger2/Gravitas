@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -35,6 +36,16 @@ public class Cube : MonoBehaviour
     |   1 2 3 0                                                                 |
     |     5                                                                     |
     |                                                                           |
+    |   Rotate Up Left                                                          |
+    |     1               1 -> 5, 4 -> 1, 5 -> 3, 3 -> 4                        |
+    |   0 5 2 4                                                                 |
+    |     3                                                                     |
+    |                                                                           |
+    |   Rotate Up Right                                                         |
+    |     3               1 -> 4, 4 -> 3, 5 -> 1, 3 -> 5                        |
+    |   0 4 2 5                                                                 |
+    |     1                                                                     |
+    |                                                                           |
     _____________________________________________________________________________
     */
 
@@ -46,17 +57,18 @@ public class Cube : MonoBehaviour
     public GameObject player_4;
     public GameObject player_5;
 
-    public GameObject[] player_array;
+    private GameObject[] player_array;
     #endregion
 
     #region Rotation Variables
     private bool is_rotating;
     public float rotate_speed;
+
+    public Camera cam;
     #endregion
 
 
    #region Unity Functions
-
     private void Awake()
     {
         player_array = new GameObject[6];
@@ -70,12 +82,17 @@ public class Cube : MonoBehaviour
     }
 
     private void Update() {
+        if (Input.GetKeyDown("e")) {
+            Get_Closest();
+        }
         if (is_rotating){
             return;
         }
         Rotate();
     }
+    #endregion
 
+    #region Rotation Functions
     private void Rotate() {
         GameObject temp = player_array[0];
         GameObject temp1 = player_array[2];
@@ -122,22 +139,44 @@ public class Cube : MonoBehaviour
                 player_array[3].GetComponent<RotationController>().Update_State(-90.0f);
             }
             StartCoroutine(RotateHorizontal(Vector3.up, -90, rotate_speed));
-        } 
+        } else if(Input.GetKeyDown("[")){
+            //Debug.Log("Rotate Up Left");
+            temp = player_array[1];
+            temp1 = player_array[3];
+            player_array[1] = player_array[5];
+            player_array[3] = player_array[4];
+            player_array[4] = temp;
+            player_array[5] = temp1;
+            StartCoroutine(RotateHorizontal(new Vector3(0,0,1), 90, rotate_speed));
+            Rotate_Up_Left();
+
+
+        } else if(Input.GetKeyDown("]")){
+            //Debug.Log("Rotate Up Right");
+            temp = player_array[1];
+            temp1 = player_array[3];
+            player_array[1] = player_array[4];
+            player_array[3] = player_array[5];
+            player_array[4] = temp1;
+            player_array[5] = temp;
+            StartCoroutine(RotateHorizontal(new Vector3(0,0,1), -90, rotate_speed));
+            Rotate_Up_Right();
+
+            
+        }
     }
 
     private void Rotate_Up() {
         if(player_array[0] != null) {
-            player_array[0].GetComponent<RotationController>().Rotate_Down(0);
+            player_array[0].GetComponent<RotationController>().Rotate_Up(0);
         } 
         if(player_array[1] != null) {
-            Debug.Log("Rotate Flat X:" + player_array[1].transform.eulerAngles.x);
             player_array[1].GetComponent<RotationController>().Rotate_Flat(0);
         } 
         if(player_array[2] != null) {
             player_array[2].GetComponent<RotationController>().Rotate_Up(0);
         } 
         if(player_array[3] != null) {
-            Debug.Log("Rotate Flat X:" + player_array[3].transform.eulerAngles.x);
             player_array[3].GetComponent<RotationController>().Rotate_Flat(0);
         } 
         if(player_array[4] != null) {
@@ -157,22 +196,60 @@ public class Cube : MonoBehaviour
             player_array[1].GetComponent<RotationController>().Rotate_Flat(1);
         } 
         if(player_array[2] != null) {
-            player_array[2].GetComponent<RotationController>().Rotate_Down(1);
+            player_array[2].GetComponent<RotationController>().Rotate_Up(1);
         } 
         if(player_array[3] != null) {
             player_array[3].GetComponent<RotationController>().Rotate_Flat(1);
         } 
         if(player_array[4] != null) {
             player_array[4].GetComponent<RotationController>().Rotate_Gravity(-90.0f);
-            //Debug.Log(player_array[4].transform.eulerAngles.x);
-
         } 
         if(player_array[5] != null) {
             player_array[5].GetComponent<RotationController>().Rotate_Gravity(90.0f);
         } 
     }
 
+    private void Rotate_Up_Left() {
+        if(player_array[0] != null) {
+            player_array[0].GetComponent<RotationController>().Rotate_Gravity(90.0f);
+        } 
+        if(player_array[1] != null) {
+            player_array[1].GetComponent<RotationController>().Rotate_Flat(2);
+        } 
+        if(player_array[2] != null) {
+            player_array[2].GetComponent<RotationController>().Rotate_Gravity(-90.0f);
+        } 
+        if(player_array[3] != null) {
+            player_array[3].GetComponent<RotationController>().Rotate_Flat(2);
+        } 
+        if(player_array[4] != null) {
+            player_array[4].GetComponent<RotationController>().Rotate_Up(2);
+        } 
+        if(player_array[5] != null) {
+            player_array[5].GetComponent<RotationController>().Rotate_Up(2);
+        } 
+    }
 
+    private void Rotate_Up_Right() {
+        if(player_array[0] != null) {
+            player_array[0].GetComponent<RotationController>().Rotate_Gravity(-90.0f);
+        } 
+        if(player_array[1] != null) {
+            player_array[1].GetComponent<RotationController>().Rotate_Flat(3);
+        } 
+        if(player_array[2] != null) {
+            player_array[2].GetComponent<RotationController>().Rotate_Gravity(90.0f);
+        } 
+        if(player_array[3] != null) {
+            player_array[3].GetComponent<RotationController>().Rotate_Flat(3);
+        } 
+        if(player_array[4] != null) {
+            player_array[4].GetComponent<RotationController>().Rotate_Up(3);
+        } 
+        if(player_array[5] != null) {
+            player_array[5].GetComponent<RotationController>().Rotate_Up(3);
+        }
+    }
 
     IEnumerator RotateHorizontal(Vector3 axis, float angle, float inTime)
 	{	
@@ -196,18 +273,39 @@ public class Cube : MonoBehaviour
         transform.eulerAngles = vec;        
         is_rotating = false;
 	}
+    #endregion
+
+    #region Camera Functions
+    private void Get_Closest() {
+        Mesh mesh = GetComponent<MeshFilter>().mesh;
+        Vector3[] vertices = mesh.vertices;
+        Vector3 cam_location = cam.transform.position;
+        // for(int i = 0; i<4; i ++) {
+        //     Debug.Log(vertices[i]);
+        // }
+        SortedList<double, Vector3> distanceMap = new SortedList<double, Vector3>();
+        foreach (Vector3 point in vertices) {
+            double distance = Euclidean_Dist(point, cam_location);
+            distanceMap[distance] = point;
+        }
+
+        List<Vector3> nearestPoints = new List<Vector3>();
+        for (int i = 0; i < 4; i++) {
+            nearestPoints.Add(distanceMap.Values[i]);
+            // Debug.Log(distanceMap.Values[i]);
+        }
+        
 
 
+    }
+
+    private double Euclidean_Dist(Vector3 a, Vector3 b) {
+        return  Math.Sqrt((Math.Pow(a.x - b.x, 2) + Math.Pow(a.y - a.y, 2) + Math.Pow(a.z - b.z, 2)));
+    }
     #endregion
 
 
-    #region Rotation Functions
 
-
-
-
-
-    #endregion
 
     #region UI Commands
     public void Rup() {
