@@ -78,17 +78,32 @@ public class Cube : MonoBehaviour
         player_array[3] = player_3;
         player_array[4] = player_4;
         player_array[5] = player_5;
+        if (player_array[2] != null) {
+            player_array[2].GetComponent<RotationController>().Update_Rotation(180.0f);
+        }
+        if (player_array[4] != null) {
+            player_array[4].GetComponent<RotationController>().Update_Rotation(90.0f);
+        }
+        if (player_array[5] != null) {
+            player_array[5].GetComponent<RotationController>().Update_Rotation(-90.0f);
+        }
         is_rotating = false;
     }
 
     private void Update() {
         if (Input.GetKeyDown("e")) {
-            Camera_dir();
+            Debug.Log(Camera_dir());
         }
         if (is_rotating){
             return;
         }
         Rotate();
+        if (player_array[1] != null) {
+            player_array[1].GetComponent<RotationController>().Flat_Direction(Camera_dir());
+        }
+        if (player_array[3] != null) {
+            player_array[3].GetComponent<RotationController>().Flat_Direction(Camera_dir());
+        }
     }
     #endregion
 
@@ -138,6 +153,19 @@ public class Cube : MonoBehaviour
         player_array[2] = player_array[4];
         player_array[4] = temp;
         player_array[5] = temp1;
+        if (player_array[0] != null) {
+            player_array[0].GetComponent<RotationController>().Update_Rotation(90.0f);
+        }
+        if (player_array[2] != null) {
+            player_array[2].GetComponent<RotationController>().Update_Rotation(90.0f);
+        }
+        if (player_array[4] != null) {
+            player_array[4].GetComponent<RotationController>().Update_Rotation(90.0f);
+        }
+        if (player_array[5] != null) {
+            player_array[5].GetComponent<RotationController>().Update_Rotation(90.0f);
+        }
+
         if (player_array[1] != null) {
             player_array[1].GetComponent<RotationController>().Update_State(-90.0f);
         }
@@ -154,6 +182,19 @@ public class Cube : MonoBehaviour
         player_array[2] = player_array[5];
         player_array[4] = temp1;
         player_array[5] = temp;
+        if (player_array[0] != null) {
+            player_array[0].GetComponent<RotationController>().Update_Rotation(-90.0f);
+        }
+        if (player_array[2] != null) {
+            player_array[2].GetComponent<RotationController>().Update_Rotation(-90.0f);
+        }
+        if (player_array[4] != null) {
+            player_array[4].GetComponent<RotationController>().Update_Rotation(-90.0f);
+        }
+        if (player_array[5] != null) {
+            player_array[5].GetComponent<RotationController>().Update_Rotation(-90.0f);
+        }
+
         if (player_array[1] != null) {
             player_array[1].GetComponent<RotationController>().Update_State(90.0f);
         }
@@ -371,8 +412,38 @@ public class Cube : MonoBehaviour
     private int Camera_dir() {
         Vector3 cam_up = cam.transform.up;
         Vector3 cam_forward = cam.transform.forward;
-        Debug.Log(cam_up +", " + cam_forward);
-        return 0;
+        //Debug.Log(cam_up +", " + cam_forward);
+        if(Math.Abs(cam_forward.y) <= 0.5f) {
+            if (Math.Abs(cam_forward.x) <= Math.Abs(cam_forward.z)) {
+                if (cam_forward.z > 0) {
+                    return 0;
+                } else {
+                    return 2;
+                }
+            } else {
+                if (cam_forward.x < 0) {
+                    return 1;
+                } else {
+                    return 3;
+                }
+
+            }
+        } else {
+            if (Math.Abs(cam_up.x) <= Math.Abs(cam_up.z)) {
+                if (cam_up.z > 0) {
+                    return 0;
+                } else {
+                    return 2;
+                }
+            } else {
+                if (cam_up.x < 0) {
+                    return 1;
+                } else {
+                    return 3;
+                }
+
+            }
+        }
     }
     #endregion
 
