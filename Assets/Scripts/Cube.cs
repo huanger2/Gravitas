@@ -92,7 +92,7 @@ public class Cube : MonoBehaviour
 
     private void Update() {
         if (Input.GetKeyDown("e")) {
-            Debug.Log(Camera_dir());
+            Get_Closest();
         }
         if (is_rotating){
             return;
@@ -114,9 +114,9 @@ public class Cube : MonoBehaviour
         } else if(Input.GetKeyDown("g")){
             R_DOWN_DIR();
         } else if(Input.GetKeyDown("f")){
-            R_LEFT();
+            R_LEFT_DIR();
         } else if(Input.GetKeyDown("h")){
-            R_RIGHT();
+            R_RIGHT_DIR();
         }
     }
 
@@ -130,6 +130,28 @@ public class Cube : MonoBehaviour
             R_DOWN();
         } else if (closest == 5) {
             R_UPL();
+        } else if (closest == 1) {
+            int dir = Camera_dir();
+            if (dir == 0) {
+                R_UP();
+            } else if (dir == 2) {
+                R_DOWN();
+            } else if (dir == 1) {
+                R_UPL();
+            } else if (dir == 3) {
+                R_UPR();
+            }
+        } else if (closest == 3) {
+            int dir = Camera_dir();
+            if (dir == 0) {
+                R_DOWN();
+            } else if (dir == 2) {
+                R_UP();
+            } else if (dir == 1) {
+                R_UPR();
+            } else if (dir == 3) {
+                R_UPL();
+            }
         }
     }
 
@@ -143,8 +165,99 @@ public class Cube : MonoBehaviour
             R_UP();
         } else if (closest == 5) {
             R_UPR();
+        } else if (closest == 1) {
+            int dir = Camera_dir();
+            if (dir == 0) {
+                R_DOWN();
+            } else if (dir == 2) {
+                R_UP();
+            } else if (dir == 1) {
+                R_UPR();
+            } else if (dir == 3) {
+                R_UPL();
+            }
+        } else if (closest == 3) {
+            int dir = Camera_dir();
+            if (dir == 0) {
+                R_UP();
+            } else if (dir == 2) {
+                R_DOWN();
+            } else if (dir == 1) {
+                R_UPL();
+            } else if (dir == 3) {
+                R_UPR();
+            }
         }
     }
+
+    private void R_LEFT_DIR() {
+        int closest = Get_Closest();
+        if (closest == 1) {
+            int dir = Camera_dir();
+            if (dir == 0) {
+                R_UPL();
+            } else if (dir == 2) {
+                R_UPR();
+            } else if (dir == 1) {
+                R_DOWN();
+            } else if (dir == 3) {
+                R_UP();
+            }
+        } else if (closest == 3) {
+            int dir = Camera_dir();
+            if (dir == 0) {
+                R_UPL();
+            } else if (dir == 2) {
+                R_UPR();
+            } else if (dir == 1) {
+                R_DOWN();
+            } else if (dir == 3) {
+                R_UP();
+            }
+        } else {
+            Vector3 cam_up = cam.transform.up;
+            if (cam_up.y > 0) {
+                R_LEFT();
+            } else {
+                R_RIGHT();
+            }
+        }
+    }
+
+    private void R_RIGHT_DIR() {
+        int closest = Get_Closest();
+        if (closest == 1) {
+            int dir = Camera_dir();
+            if (dir == 0) {
+                R_UPR();
+            } else if (dir == 2) {
+                R_UPL();
+            } else if (dir == 1) {
+                R_UP();
+            } else if (dir == 3) {
+                R_DOWN();
+            }
+        } else if (closest == 3) {
+            int dir = Camera_dir();
+            if (dir == 0) {
+                R_UPR();
+            } else if (dir == 2) {
+                R_UPL();
+            } else if (dir == 1) {
+                R_UP();
+            } else if (dir == 3) {
+                R_DOWN();
+            }
+        } else {
+            Vector3 cam_up = cam.transform.up;
+            if (cam_up.y > 0) {
+                R_RIGHT();
+            } else {
+                R_LEFT();
+            }
+        }
+    }
+
 
     private void R_LEFT() {
         GameObject temp = player_array[0];
@@ -365,44 +478,50 @@ public class Cube : MonoBehaviour
 
     #region Camera Functions
     private int Get_Closest() {
-        Mesh mesh = GetComponent<MeshFilter>().mesh;
-        Vector3[] vertices = mesh.vertices;
-        Vector3 cam_location = cam.transform.position;
-        SortedList<double, Vector3> distanceMap = new SortedList<double, Vector3>();
-        foreach (Vector3 point in vertices) {
-            double distance = Euclidean_Dist(point, cam_location);
-            distanceMap[distance] = point;
-        }
+        Vector3 cam_up = cam.transform.up;
+        Vector3 cam_forward = cam.transform.forward;
+        if(Math.Abs(cam_forward.y) <= 0.5f) {
+            Mesh mesh = GetComponent<MeshFilter>().mesh;
+            Vector3[] vertices = mesh.vertices;
+            Vector3 cam_location = cam.transform.position;
+            SortedList<double, Vector3> distanceMap = new SortedList<double, Vector3>();
+            foreach (Vector3 point in vertices) {
+                double distance = Euclidean_Dist(point, cam_location);
+                distanceMap[distance] = point;
+            }
 
-        List<Vector3> nearestPoints = new List<Vector3>();
-        for (int i = 0; i < 2; i++) {
-            nearestPoints.Add(distanceMap.Values[i]);
-            //Debug.Log(distanceMap.Values[i]);
+            List<Vector3> nearestPoints = new List<Vector3>();
+            for (int i = 0; i < 2; i++) {
+                nearestPoints.Add(distanceMap.Values[i]);
+                //Debug.Log(distanceMap.Values[i]);
+            }
+            Vector3 point1 = new Vector3(-0.5f, -0.5f, -0.5f);
+            Vector3 point2 = new Vector3(0.5f, 0.5f, -0.5f);
+            Vector3 point3 = new Vector3(0.5f, -0.5f, 0.5f);
+            Vector3 point4 = new Vector3(-0.5f, 0.5f, 0.5f);
+            if (nearestPoints.Contains(point1) && nearestPoints.Contains(point4)) {
+                //Debug.Log("4");
+                return 4;
+            } else if (nearestPoints.Contains(point1) && nearestPoints.Contains(point2)) {
+                //Debug.Log("0");
+                return 0;
+            } else if (nearestPoints.Contains(point2) && nearestPoints.Contains(point3)) {
+                //Debug.Log("5");
+                return 5;
+            } else if (nearestPoints.Contains(point3) && nearestPoints.Contains(point4)) {
+                // Debug.Log("2");
+                return 2;
+            }
+            return 100; 
+        } else {
+            //Debug.Log(cam_up +", " + cam_forward);
+            if (cam_forward.y > 0) {
+                return 3;
+            } else {
+                return 1;
+            }
+            
         }
-        Vector3 point1 = new Vector3(-0.5f, -0.5f, -0.5f);
-        Vector3 point2 = new Vector3(0.5f, 0.5f, -0.5f);
-        Vector3 point3 = new Vector3(0.5f, -0.5f, 0.5f);
-        Vector3 point4 = new Vector3(-0.5f, 0.5f, 0.5f);
-        if (nearestPoints.Contains(point1) && nearestPoints.Contains(point4)) {
-            //Debug.Log("4");
-            return 4;
-        } else if (nearestPoints.Contains(point1) && nearestPoints.Contains(point2)) {
-            //Debug.Log("0");
-            return 0;
-        } else if (nearestPoints.Contains(point2) && nearestPoints.Contains(point3)) {
-            //Debug.Log("5");
-            return 5;
-        } else if (nearestPoints.Contains(point3) && nearestPoints.Contains(point4)) {
-           // Debug.Log("2");
-            return 2;
-        } else if (nearestPoints.Contains(point1) && nearestPoints.Contains(point3)) {
-            Debug.Log("3");
-            return 3;
-        } else if (nearestPoints.Contains(point2) && nearestPoints.Contains(point4)) {
-            Debug.Log("1");
-            return 1;
-        }
-        return 100;
     }
 
     private double Euclidean_Dist(Vector3 a, Vector3 b) {
@@ -465,13 +584,13 @@ public class Cube : MonoBehaviour
         if (is_rotating){
             return;
         }
-        R_LEFT();
+        R_LEFT_DIR();
     }
     public void Rright() {
         if (is_rotating){
             return;
         }
-        R_RIGHT();  
+        R_RIGHT_DIR();  
     }
     #endregion
 }
