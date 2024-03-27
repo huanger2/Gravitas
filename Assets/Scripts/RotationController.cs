@@ -121,17 +121,6 @@ public class RotationController : MonoBehaviour
 
 
         Vector3 up = new Vector3(state.x + 90.0f * multiplier, -90.0f, 90.0f);
-        int rot_multiplier;
-        if (multiplier == 0) {
-            rot_multiplier = 2;
-        } else if (multiplier == 2) {
-            rot_multiplier = 0;
-        } else if (multiplier == is_top) {
-            rot_multiplier = -1 * is_top;
-        } else {
-            rot_multiplier = is_top;
-        }
-        rotation += 90.0f * rot_multiplier;
         x_value = up.x;
         transform.eulerAngles = up;
         player.GetComponent<PlayerController>().change_gravity(true);
