@@ -369,8 +369,9 @@ public class Cube : MonoBehaviour
     }
 
     private int Camera_dir() {
-        Vector3 cam_up = cam.transform.up;;
-        Debug.Log(cam_up);
+        Vector3 cam_up = cam.transform.up;
+        Vector3 cam_forward = cam.transform.forward;
+        Debug.Log(cam_up +", " + cam_forward);
         return 0;
     }
     #endregion

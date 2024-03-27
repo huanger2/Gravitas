@@ -4,21 +4,31 @@ using UnityEngine;
 
 public class ZoomController : MonoBehaviour
 {
-    public float ZoomChange;
-    public float SmoothChange;
+    public float initial_fov;
+    public Vector3 initial_pos;
     public float Minsize, Maxsize;
+    public float zoomSpeed;
     private Camera cam;
     public void Start() {
         cam = GetComponent<Camera>();
+        cam.transform.position = initial_pos;
+        cam.fieldOfView = initial_fov;
     }
 
     private void Update() {
         if (Input.mouseScrollDelta.y > 0) {
-            cam.fieldOfView--;
+            if (cam.fieldOfView >= Minsize) {
+                cam.fieldOfView = cam.fieldOfView - zoomSpeed;
+            } 
+            
+        } else if (Input.mouseScrollDelta.y < 0) {
+            if (cam.fieldOfView <= Maxsize) {
+                cam.fieldOfView = cam.fieldOfView + zoomSpeed;
+            } 
         }
-        if (Input.mouseScrollDelta.y < 0) {
-            cam.fieldOfView++;
+
+        if (Input.GetMouseButtonDown(1)) {
+            cam.fieldOfView = initial_fov;
         }
-        cam.orthographicSize = Mathf.Clamp(cam.orthographicSize, Minsize, Maxsize);
     }
 }
