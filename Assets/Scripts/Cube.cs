@@ -91,9 +91,6 @@ public class Cube : MonoBehaviour
     }
 
     private void Update() {
-        if (Input.GetKeyDown("e")) {
-            Get_Closest();
-        }
         if (is_rotating){
             return;
         }
@@ -103,6 +100,34 @@ public class Cube : MonoBehaviour
         }
         if (player_array[3] != null) {
             player_array[3].GetComponent<RotationController>().Flat_Direction(Camera_dir());
+        }
+        Vector3 cam_up = cam.transform.up;
+        if (cam_up.y > 0) {
+            if (player_array[0] != null) {
+                player_array[0].GetComponent<RotationController>().player.GetComponent<PlayerController>().reverse = false;
+            }
+            if (player_array[2] != null) {
+                player_array[2].GetComponent<RotationController>().player.GetComponent<PlayerController>().reverse = false;
+            }
+            if (player_array[4] != null) {
+                player_array[4].GetComponent<RotationController>().player.GetComponent<PlayerController>().reverse = false;
+            }
+            if (player_array[5] != null) {
+                player_array[5].GetComponent<RotationController>().player.GetComponent<PlayerController>().reverse = false;
+            }
+        } else {
+            if (player_array[0] != null) {
+                player_array[0].GetComponent<RotationController>().player.GetComponent<PlayerController>().reverse = true;
+            }
+            if (player_array[2] != null) {
+                player_array[2].GetComponent<RotationController>().player.GetComponent<PlayerController>().reverse = true;
+            }
+            if (player_array[4] != null) {
+                player_array[4].GetComponent<RotationController>().player.GetComponent<PlayerController>().reverse = true;
+            }
+            if (player_array[5] != null) {
+                player_array[5].GetComponent<RotationController>().player.GetComponent<PlayerController>().reverse = true;
+            }
         }
     }
     #endregion
