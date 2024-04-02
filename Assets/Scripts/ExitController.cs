@@ -6,13 +6,16 @@ public class ExitController : MonoBehaviour
 {
     public int num_players;
     public GameObject[] players;
+    public bool all_exit;
 
     void Awake () {
+        all_exit = false;
     }
 
     public void Update() {
         if (check_exit()) {
             Debug.Log("All players exited");
+            all_exit = true;
         }
     }
 
