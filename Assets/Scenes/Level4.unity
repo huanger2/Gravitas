@@ -842,15 +842,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 41070690452893912, guid: 83b101bf62bc94e0d908256a78526a4d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.07
+      value: -0.2
       objectReference: {fileID: 0}
     - target: {fileID: 41070690452893912, guid: 83b101bf62bc94e0d908256a78526a4d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.03
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 41070690452893912, guid: 83b101bf62bc94e0d908256a78526a4d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4
+      value: -4.2
       objectReference: {fileID: 0}
     - target: {fileID: 41070690452893912, guid: 83b101bf62bc94e0d908256a78526a4d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1778,7 +1778,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32aa65ab43a363e4a9277fc0790e1692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  num_players: 2
+  num_players: 6
   players:
   - {fileID: 1097933167}
   - {fileID: 1797476741}
