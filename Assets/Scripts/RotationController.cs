@@ -58,18 +58,34 @@ public class RotationController : MonoBehaviour
                 return;
             }
         } else {
-            if (dir == 0) {
-                flat = new Vector3(360.0f, 180.0f + rotation, 0.0f);
-            } else if (dir == 1) {
-                flat = new Vector3(360.0f, 90.0f + rotation, 0.0f);
-            } else if (dir == 2) {
-                flat = new Vector3(360.0f, 0.0f + rotation, 0.0f);
-            } else if (dir == 3) {
-                flat = new Vector3(360.0f, 270.0f + rotation, 0.0f);
+            if (is_up == 2 || is_up == 3) {
+                if (dir == 0) {
+                    flat = new Vector3(360.0f, 0.0f + rotation, 0.0f);
+                } else if (dir == 1) {
+                    flat = new Vector3(360.0f, 270.0f + rotation, 0.0f);
+                } else if (dir == 2) {
+                    flat = new Vector3(360.0f, 180.0f + rotation, 0.0f);
+                } else if (dir == 3) {
+                    flat = new Vector3(360.0f, 90.0f + rotation, 0.0f);
+                } else {
+                    Debug.Log("Flat error");
+                    return;
+                }
             } else {
-                Debug.Log("Flat error");
-                return;
+                if (dir == 0) {
+                    flat = new Vector3(360.0f, 180.0f + rotation, 0.0f);
+                } else if (dir == 1) {
+                    flat = new Vector3(360.0f, 90.0f + rotation, 0.0f);
+                } else if (dir == 2) {
+                    flat = new Vector3(360.0f, 0.0f + rotation, 0.0f);
+                } else if (dir == 3) {
+                    flat = new Vector3(360.0f, 270.0f + rotation, 0.0f);
+                } else {
+                    Debug.Log("Flat error");
+                    return;
+                }
             }
+            
         }
         
         transform.eulerAngles = flat;
@@ -131,5 +147,4 @@ public class RotationController : MonoBehaviour
         rotation -= degree;
         state = new Vector3(state.x + degree, -90.0f, 90.0f);
     }
-
 }

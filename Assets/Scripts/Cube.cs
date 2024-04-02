@@ -95,6 +95,9 @@ public class Cube : MonoBehaviour
             return;
         }
         Rotate();
+        if (Input.GetKeyDown("e")) {
+            Debug.Log(Camera_dir());
+        }
         if (player_array[1] != null) {
             player_array[1].GetComponent<RotationController>().Flat_Direction(Camera_dir());
         }
