@@ -61,7 +61,7 @@ public class Cube : MonoBehaviour
     #endregion
 
     #region Rotation Variables
-    private bool is_rotating;
+    public bool is_rotating;
     public float rotate_speed;
 
     public Camera cam;
@@ -137,6 +137,7 @@ public class Cube : MonoBehaviour
 
     #region Rotation Functions
     private void Rotate() {
+        
         if(Input.GetKeyDown("t")){
             R_UP_DIR();
         } else if(Input.GetKeyDown("g")){

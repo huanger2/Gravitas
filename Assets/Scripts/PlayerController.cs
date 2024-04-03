@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
 	public bool has_gravity;
 	public bool reverse;
 
+	public GameObject cube;
+
 	#region Exit variables
 	public bool exited = false;
 
@@ -28,6 +30,10 @@ public class PlayerController : MonoBehaviour
 	void Update()
 	{
 		//Movement
+		if (cube.GetComponent<Cube>().is_rotating) {
+			playerRB.velocity = Vector3.zero;
+			return;
+		}
 
 		float MoveHor = Input.GetAxisRaw("Horizontal");
 		if (MoveHor == 0) {
