@@ -7,6 +7,9 @@ public class PlayerController : MonoBehaviour
 	public float movespeed;
 	public float maxspeed;
 	public bool has_gravity;
+	public bool reverse;
+
+	public GameObject cube;
 
 	#region Exit variables
 	public bool exited = false;
@@ -27,23 +30,36 @@ public class PlayerController : MonoBehaviour
 	void Update()
 	{
 		//Movement
+		if (cube.GetComponent<Cube>().is_rotating) {
+			playerRB.velocity = Vector3.zero;
+			return;
+		}
 
 		float MoveHor = Input.GetAxisRaw("Horizontal");
 		if (MoveHor == 0) {
 			playerRB.velocity = new Vector3(0,playerRB.velocity.y, playerRB.velocity.z);
 		} else {
-			Vector3 movement = new Vector3(MoveHor * movespeed, 0, 0);
-			movement = movement * Time.deltaTime;
+			if (!reverse || !has_gravity) {
+				Vector3 movement = new Vector3(MoveHor * movespeed, 0, 0);
+				movement = movement * Time.deltaTime;
 
-			playerRB.AddForce(movement);
-			if (playerRB.velocity.x > maxspeed)
-			{
-				playerRB.velocity = new Vector3(maxspeed, 0, playerRB.velocity.z);
+				playerRB.AddForce(movement);
+				if (playerRB.velocity.x > maxspeed) {
+					playerRB.velocity = new Vector3(maxspeed, 0, playerRB.velocity.z);
+				} else if (playerRB.velocity.x < -maxspeed) {
+					playerRB.velocity = new Vector3(-maxspeed, 0, playerRB.velocity.z);
+				}
+			} else {
+				Vector3 movement = new Vector3(-1 * MoveHor * movespeed, 0, 0);
+				movement = movement * Time.deltaTime;
+				playerRB.AddForce(movement);
+				if (playerRB.velocity.x > maxspeed) {
+					playerRB.velocity = new Vector3(maxspeed, 0, playerRB.velocity.z);
+				} else if (playerRB.velocity.x < -maxspeed) {
+					playerRB.velocity = new Vector3(-maxspeed, 0, playerRB.velocity.z);
+				}
 			}
-			if (playerRB.velocity.x < -maxspeed)
-			{
-				playerRB.velocity = new Vector3(-maxspeed, 0, playerRB.velocity.z);
-			}
+			
 		}
 		if (!has_gravity) {
 			float MoveVert = Input.GetAxisRaw("Vertical");
