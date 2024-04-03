@@ -12,6 +12,7 @@ public class RotationController : MonoBehaviour
     public float rotation;
 
     public float x_value;
+
     private void Update() {
     }
     public void Rotate_Gravity(float degree) {
@@ -25,6 +26,15 @@ public class RotationController : MonoBehaviour
     }
 
     public void Rotate_Top(int up) {
+        if (is_up == 0 || is_up == 1) {
+            if (up == 2 || up == 3) {
+                rotation += 180;
+            }
+        } else if (is_up == 2 || is_up == 3) {
+            if (up == 1 || up == 0) {
+                rotation += 180;
+            }
+        }
         is_up = up;
         is_top = 1;
         state = new Vector3(x_value, -90.0f, 90.0f);
@@ -134,14 +144,10 @@ public class RotationController : MonoBehaviour
                 multiplier = 2;
             }
         }
-
-
         Vector3 up = new Vector3(state.x + 90.0f * multiplier, -90.0f, 90.0f);
         x_value = up.x;
         transform.eulerAngles = up;
         player.GetComponent<PlayerController>().change_gravity(true);
-        
-
     }
     public void Update_State(float degree) {
         rotation -= degree;

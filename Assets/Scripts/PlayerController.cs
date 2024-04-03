@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
 		if (MoveHor == 0) {
 			playerRB.velocity = new Vector3(0,playerRB.velocity.y, playerRB.velocity.z);
 		} else {
-			if (!reverse) {
+			if (!reverse || !has_gravity) {
 				Vector3 movement = new Vector3(MoveHor * movespeed, 0, 0);
 				movement = movement * Time.deltaTime;
 
