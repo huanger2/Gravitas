@@ -80,7 +80,6 @@ public class TutorialController : MonoBehaviour
         {
             Stage1 = true;
             completionCond = false;
-            Debug.Log("Resuming");
             Resume();
         }
     }
