@@ -11,7 +11,6 @@ public class PauseMenu : MonoBehaviour
     public int level;
     private void Awake() {
         Resume();
-
     }
 
     private void Update() {
