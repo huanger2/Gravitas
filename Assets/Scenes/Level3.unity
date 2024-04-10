@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44950098, g: 0.49649525, b: 0.5591466, a: 1}
+  m_IndirectSpecularColor: {r: 0.4495005, g: 0.49649453, b: 0.55914503, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -680,6 +680,14 @@ PrefabInstance:
       propertyPath: has_gravity
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3393524273124750034, guid: 31fdf3fe1b4bcf1448d4d70748de10c1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3393524273124750034, guid: 31fdf3fe1b4bcf1448d4d70748de10c1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4.3
+      objectReference: {fileID: 0}
     - target: {fileID: 5833760861442773989, guid: 31fdf3fe1b4bcf1448d4d70748de10c1, type: 3}
       propertyPath: m_TargetTexture
       value: 
@@ -737,7 +745,8 @@ PrefabInstance:
       value: 90
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 987920431979586329, guid: 31fdf3fe1b4bcf1448d4d70748de10c1, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 7889708462932049472, guid: 31fdf3fe1b4bcf1448d4d70748de10c1, type: 3}
       insertIndex: 1
@@ -1050,15 +1059,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 41070690452893912, guid: 83b101bf62bc94e0d908256a78526a4d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.07
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 41070690452893912, guid: 83b101bf62bc94e0d908256a78526a4d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.03
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 41070690452893912, guid: 83b101bf62bc94e0d908256a78526a4d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 41070690452893912, guid: 83b101bf62bc94e0d908256a78526a4d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1762,15 +1771,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 41070690452893912, guid: 83b101bf62bc94e0d908256a78526a4d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.5
+      value: -0.4
       objectReference: {fileID: 0}
     - target: {fileID: 41070690452893912, guid: 83b101bf62bc94e0d908256a78526a4d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.18
+      value: -0.2
       objectReference: {fileID: 0}
     - target: {fileID: 41070690452893912, guid: 83b101bf62bc94e0d908256a78526a4d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 41070690452893912, guid: 83b101bf62bc94e0d908256a78526a4d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2364,6 +2373,14 @@ PrefabInstance:
       propertyPath: has_gravity
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3393524273124750034, guid: 31fdf3fe1b4bcf1448d4d70748de10c1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 3393524273124750034, guid: 31fdf3fe1b4bcf1448d4d70748de10c1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6651748061389403694, guid: 31fdf3fe1b4bcf1448d4d70748de10c1, type: 3}
       propertyPath: is_up
       value: 5
@@ -2421,7 +2438,8 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 1d5f0eec6964b4c4ebad536c5b2a3b2c, type: 2}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 987920431979586329, guid: 31fdf3fe1b4bcf1448d4d70748de10c1, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 7889708462932049472, guid: 31fdf3fe1b4bcf1448d4d70748de10c1, type: 3}
       insertIndex: 1
