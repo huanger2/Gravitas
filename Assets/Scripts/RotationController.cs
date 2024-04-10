@@ -47,6 +47,8 @@ public class RotationController : MonoBehaviour
         Vector3 flat = new Vector3(360.0f, 0.0f,0.0f);
         transform.eulerAngles = flat;
         player.GetComponent<PlayerController>().change_gravity(false);
+        player.GetComponent<PlayerController>().on_bottom = false;
+
     }
 
     public void Rotate_Bottom(int up) {
@@ -57,6 +59,7 @@ public class RotationController : MonoBehaviour
         Vector3 flat = new Vector3(360.0f,0.0f,0.0f);
         transform.eulerAngles = flat;
         player.GetComponent<PlayerController>().change_gravity(false);
+        player.GetComponent<PlayerController>().on_bottom = true;
     }
 
     public void Flat_Direction(int dir) {
@@ -155,6 +158,8 @@ public class RotationController : MonoBehaviour
         x_value = up.x;
         transform.eulerAngles = up;
         player.GetComponent<PlayerController>().change_gravity(true);
+        player.GetComponent<PlayerController>().on_bottom = false;
+
     }
     public void Update_State(float degree) {
         rotation -= degree;

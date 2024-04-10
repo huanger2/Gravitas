@@ -506,7 +506,7 @@ public class Cube : MonoBehaviour
     #endregion
 
     #region Camera Functions
-    private int Get_Closest() {
+    public int Get_Closest() {
         Vector3 cam_up = cam.transform.up;
         Vector3 cam_forward = cam.transform.forward;
         if(Math.Abs(cam_forward.y) <= 0.5f) {
