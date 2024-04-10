@@ -38,19 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD:Assets/Scenes/SampleScene.unity
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481676, a: 1}
-=======
   m_IndirectSpecularColor: {r: 0.4495005, g: 0.49649453, b: 0.55914503, a: 1}
->>>>>>> e7ff0570186fe9d4b4a1bb91f5a69f6ae03574a3:Assets/Scenes/Level1.unity
-=======
-  m_IndirectSpecularColor: {r: 0.44950098, g: 0.49649525, b: 0.5591466, a: 1}
->>>>>>> d37430d05bb7f5ed677ecdf80fea8195581f1141
-=======
-  m_IndirectSpecularColor: {r: 0.4495005, g: 0.49649453, b: 0.55914503, a: 1}
->>>>>>> 7272fab779a94a09cec33fd34448be3f7eb1573e
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
