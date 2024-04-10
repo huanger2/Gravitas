@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 	public float maxspeed;
 	public bool has_gravity;
 	public bool reverse;
+	public bool on_bottom;
 
 	public GameObject cube;
 
@@ -40,14 +41,25 @@ public class PlayerController : MonoBehaviour
 			playerRB.velocity = new Vector3(0,playerRB.velocity.y, playerRB.velocity.z);
 		} else {
 			if (!reverse || !has_gravity) {
-				Vector3 movement = new Vector3(MoveHor * movespeed, 0, 0);
-				movement = movement * Time.deltaTime;
+				if (on_bottom && cube.GetComponent<Cube>().Get_Closest() != 3) {
+					Vector3 movement = new Vector3(-1 * MoveHor * movespeed, 0, 0);
+					movement = movement * Time.deltaTime;
+					playerRB.AddForce(movement);
+					if (playerRB.velocity.x > maxspeed) {
+						playerRB.velocity = new Vector3(maxspeed, 0, playerRB.velocity.z);
+					} else if (playerRB.velocity.x < -maxspeed) {
+						playerRB.velocity = new Vector3(-maxspeed, 0, playerRB.velocity.z);
+					}
+				} else {
+					Vector3 movement = new Vector3(MoveHor * movespeed, 0, 0);
+					movement = movement * Time.deltaTime;
 
-				playerRB.AddForce(movement);
-				if (playerRB.velocity.x > maxspeed) {
-					playerRB.velocity = new Vector3(maxspeed, 0, playerRB.velocity.z);
-				} else if (playerRB.velocity.x < -maxspeed) {
-					playerRB.velocity = new Vector3(-maxspeed, 0, playerRB.velocity.z);
+					playerRB.AddForce(movement);
+					if (playerRB.velocity.x > maxspeed) {
+						playerRB.velocity = new Vector3(maxspeed, 0, playerRB.velocity.z);
+					} else if (playerRB.velocity.x < -maxspeed) {
+						playerRB.velocity = new Vector3(-maxspeed, 0, playerRB.velocity.z);
+					}
 				}
 			} else {
 				Vector3 movement = new Vector3(-1 * MoveHor * movespeed, 0, 0);
