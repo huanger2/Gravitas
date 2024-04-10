@@ -924,6 +924,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: 2D Scene 6
       objectReference: {fileID: 0}
+    - target: {fileID: 3828204176207326681, guid: 2756496f745983645a6e97f56a2165a3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 3828204176207326681, guid: 2756496f745983645a6e97f56a2165a3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3.44
+      objectReference: {fileID: 0}
     - target: {fileID: 4394738588834864380, guid: 2756496f745983645a6e97f56a2165a3, type: 3}
       propertyPath: cube
       value: 
@@ -964,6 +972,10 @@ PrefabInstance:
       propertyPath: rotation
       value: 180
       objectReference: {fileID: 0}
+    - target: {fileID: 5077661984712239397, guid: 2756496f745983645a6e97f56a2165a3, type: 3}
+      propertyPath: last_flat
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 5389988152882138350, guid: 2756496f745983645a6e97f56a2165a3, type: 3}
       propertyPath: m_TargetTexture
       value: 
@@ -972,6 +984,14 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 987baa1de7b898540a6edbe05d8133fb, type: 2}
+    - target: {fileID: 7631767448784054567, guid: 2756496f745983645a6e97f56a2165a3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.89
+      objectReference: {fileID: 0}
+    - target: {fileID: 7631767448784054567, guid: 2756496f745983645a6e97f56a2165a3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4.06
+      objectReference: {fileID: 0}
     - target: {fileID: 8594375764490592587, guid: 2756496f745983645a6e97f56a2165a3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 444.4924
