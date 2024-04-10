@@ -562,6 +562,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1460002660}
     m_Modifications:
     - target: {fileID: 329643715654546664, guid: 31fdf3fe1b4bcf1448d4d70748de10c1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.59
+      objectReference: {fileID: 0}
+    - target: {fileID: 329643715654546664, guid: 31fdf3fe1b4bcf1448d4d70748de10c1, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
@@ -926,11 +930,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3828204176207326681, guid: 2756496f745983645a6e97f56a2165a3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.02
+      value: -2.85
       objectReference: {fileID: 0}
     - target: {fileID: 3828204176207326681, guid: 2756496f745983645a6e97f56a2165a3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.44
+      value: 3.84
       objectReference: {fileID: 0}
     - target: {fileID: 4394738588834864380, guid: 2756496f745983645a6e97f56a2165a3, type: 3}
       propertyPath: cube
@@ -986,11 +990,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 987baa1de7b898540a6edbe05d8133fb, type: 2}
     - target: {fileID: 7631767448784054567, guid: 2756496f745983645a6e97f56a2165a3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.89
+      value: 2.77
       objectReference: {fileID: 0}
     - target: {fileID: 7631767448784054567, guid: 2756496f745983645a6e97f56a2165a3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.06
+      value: -4.05
       objectReference: {fileID: 0}
     - target: {fileID: 8594375764490592587, guid: 2756496f745983645a6e97f56a2165a3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1245,7 +1249,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 41070690452893912, guid: 83b101bf62bc94e0d908256a78526a4d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.2
+      value: -2.25
       objectReference: {fileID: 0}
     - target: {fileID: 41070690452893912, guid: 83b101bf62bc94e0d908256a78526a4d, type: 3}
       propertyPath: m_LocalPosition.y
