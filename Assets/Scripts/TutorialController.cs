@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TutorialController : MonoBehaviour
 {
@@ -13,6 +14,11 @@ public class TutorialController : MonoBehaviour
     public GameObject Stage2UI;
     public GameObject Stage3UI;
     public GameObject Stage4UI;
+
+    public GameObject upArrow;
+    public GameObject downArrow;
+    public GameObject leftArrow;
+    public GameObject rightArrow;
 
     public static float wait;
     public static float Stage3Threshold = 150;
@@ -90,10 +96,18 @@ public class TutorialController : MonoBehaviour
         activateStageUI(Stage2UI);
         Time.timeScale = 0f;
         inStage = true;
+        upArrow.GetComponent<Image>().color = Color.red;
+        downArrow.GetComponent<Image>().color = Color.red;
+        leftArrow.GetComponent<Image>().color = Color.red;
+        rightArrow.GetComponent<Image>().color = Color.red;
 
         // poll for requested behavior
         if (completionCond)
         {
+            upArrow.GetComponent<Image>().color = Color.white;
+            downArrow.GetComponent<Image>().color = Color.white;
+            leftArrow.GetComponent<Image>().color = Color.white;
+            rightArrow.GetComponent<Image>().color = Color.white;
             Stage2 = true;
             completionCond = false;
             Resume();
