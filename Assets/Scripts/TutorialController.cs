@@ -176,6 +176,11 @@ public class TutorialController : MonoBehaviour
     public void Skip()
     {
         completionCond = true;
+        Stage1 = true;
+        Stage2 = true;
+        Stage3 = true;
+        Stage4 = true;
+        Resume();
     }
 
     /** Restarts the tutorial. */
