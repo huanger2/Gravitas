@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,8 @@ public class PlayerController : MonoBehaviour
 	public bool has_gravity;
 	public bool reverse;
 	public bool on_bottom;
+
+	private Vector3 start_loc;
 
 
 	public GameObject cube;
@@ -25,12 +28,18 @@ public class PlayerController : MonoBehaviour
 
 	void Awake()
 	{
+		start_loc = new Vector3(gameObject.transform.localPosition.x, 0.3f, gameObject.transform.localPosition.y);
+		gameObject.transform.localPosition = start_loc;
 		playerRB = gameObject.GetComponent<Rigidbody>();
 
 	}
 
 	void Update()
 	{
+		if (Mathf.Abs(gameObject.transform.localPosition.x) > 6 || Mathf.Abs(gameObject.transform.localPosition.y) > 6) {
+			gameObject.transform.position = start_loc;
+
+		}
 		//Movement
 		if (cube.GetComponent<Cube>().is_rotating) {
 			playerRB.velocity = Vector3.zero;
