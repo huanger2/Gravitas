@@ -95,11 +95,11 @@ public class TutorialController : MonoBehaviour
     {
         activateStageUI(Stage2UI);
         Time.timeScale = 0f;
-        inStage = true;
         upArrow.GetComponent<Image>().color = Color.red;
         downArrow.GetComponent<Image>().color = Color.red;
         leftArrow.GetComponent<Image>().color = Color.red;
         rightArrow.GetComponent<Image>().color = Color.red;
+        inStage = true;
 
         // poll for requested behavior
         if (completionCond)
