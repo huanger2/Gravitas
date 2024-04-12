@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
 	public bool reverse;
 	public bool on_bottom;
 
+
 	public GameObject cube;
 
 	#region Exit variables
@@ -42,6 +43,16 @@ public class PlayerController : MonoBehaviour
 		} else {
 			if (!reverse || !has_gravity) {
 				if (on_bottom && cube.GetComponent<Cube>().Get_Closest() != 3) {
+					Vector3 movement = new Vector3(-1 * MoveHor * movespeed, 0, 0);
+					movement = movement * Time.deltaTime;
+					playerRB.AddForce(movement);
+					if (playerRB.velocity.x > maxspeed) {
+						playerRB.velocity = new Vector3(maxspeed, 0, playerRB.velocity.z);
+					} else if (playerRB.velocity.x < -maxspeed) {
+						playerRB.velocity = new Vector3(-maxspeed, 0, playerRB.velocity.z);
+					}
+				} else if (!on_bottom && cube.GetComponent<Cube>().Get_Closest() == 3 && has_gravity){
+					//Debug.Log("wtf");
 					Vector3 movement = new Vector3(-1 * MoveHor * movespeed, 0, 0);
 					movement = movement * Time.deltaTime;
 					playerRB.AddForce(movement);
