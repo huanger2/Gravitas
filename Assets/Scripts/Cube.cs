@@ -78,7 +78,7 @@ public class Cube : MonoBehaviour
         player_array[3] = player_3;
         player_array[4] = player_4;
         player_array[5] = player_5;
-        if (player_array[2] != null) {
+        if (player_array[2] != null) {  
             player_array[2].GetComponent<RotationController>().Update_Rotation(180.0f);
         }
         if (player_array[4] != null) {
