@@ -31,4 +31,8 @@ public class WinController : MonoBehaviour
     public void Restart() {
         SceneManager.LoadScene("Level" + level.ToString());
     }
+
+    public void Next() {
+        SceneManager.LoadScene("Level" + (level + 1).ToString());
+    }
 }

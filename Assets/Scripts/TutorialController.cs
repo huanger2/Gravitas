@@ -189,6 +189,10 @@ public class TutorialController : MonoBehaviour
     /** Skips the current stage. */
     public void Skip()
     {
+        upArrow.GetComponent<Image>().color = Color.white;
+        downArrow.GetComponent<Image>().color = Color.white;
+        leftArrow.GetComponent<Image>().color = Color.white;
+        rightArrow.GetComponent<Image>().color = Color.white;
         completionCond = true;
         Stage1 = true;
         Stage2 = true;
