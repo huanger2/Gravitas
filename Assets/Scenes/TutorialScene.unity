@@ -4695,6 +4695,10 @@ MonoBehaviour:
   Stage2UI: {fileID: 1789553646}
   Stage3UI: {fileID: 2066096604}
   Stage4UI: {fileID: 538957384}
+  upArrow: {fileID: 1248812735}
+  downArrow: {fileID: 1504154358}
+  leftArrow: {fileID: 278897065}
+  rightArrow: {fileID: 1592391985}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
