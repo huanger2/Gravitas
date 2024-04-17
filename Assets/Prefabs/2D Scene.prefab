@@ -318,7 +318,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a19191d9cb12454a9fd2fdc7c3250b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   state: {x: 0, y: 0, z: 0}
+  is_up: 0
+  is_top: 0
+  last_flat: 0
+  rotation: 0
+  x_value: 0
 --- !u!1 &2291720201805966278
 GameObject:
   m_ObjectHideFlags: 0
@@ -348,13 +354,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2291720201805966278}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.82, y: 0, z: 3.39}
+  m_LocalRotation: {x: 0.5, y: 0.5, z: 0.5, w: 0.5}
+  m_LocalPosition: {x: 2.8200073, y: 0, z: 3.3899267}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7889708462932049472}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 90}
 --- !u!33 &3847103090531946385
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -383,7 +389,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 39eb99f50dbd9594b910b2864f229132, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -467,7 +473,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movespeed: 500
   maxspeed: 500
-  initial_gravity: -9.8
+  has_gravity: 0
+  reverse: 0
+  on_bottom: 0
+  cube: {fileID: 0}
+  exited: 0
+  exit: {fileID: 0}
 --- !u!1 &3695136075670304756
 GameObject:
   m_ObjectHideFlags: 0
