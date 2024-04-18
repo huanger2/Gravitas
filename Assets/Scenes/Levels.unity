@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641228, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -539,12 +539,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1911404053}
         m_TargetAssemblyTypeName: LevelsManager, Assembly-CSharp
-        m_MethodName: Level2
-        m_Mode: 1
+        m_MethodName: LoadLevel
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -902,12 +902,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1911404053}
         m_TargetAssemblyTypeName: LevelsManager, Assembly-CSharp
-        m_MethodName: Level4
-        m_Mode: 1
+        m_MethodName: LoadLevel
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1114,12 +1114,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1911404053}
         m_TargetAssemblyTypeName: LevelsManager, Assembly-CSharp
-        m_MethodName: Level3
-        m_Mode: 1
+        m_MethodName: LoadLevel
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1326,12 +1326,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1911404053}
         m_TargetAssemblyTypeName: LevelsManager, Assembly-CSharp
-        m_MethodName: Level7
-        m_Mode: 1
+        m_MethodName: LoadLevel
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 7
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1676,12 +1676,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1911404053}
         m_TargetAssemblyTypeName: LevelsManager, Assembly-CSharp
-        m_MethodName: Level1
-        m_Mode: 1
+        m_MethodName: LoadLevel
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1809,12 +1809,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1911404053}
         m_TargetAssemblyTypeName: LevelsManager, Assembly-CSharp
-        m_MethodName: Level5
-        m_Mode: 1
+        m_MethodName: LoadLevel
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 5
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2021,12 +2021,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1911404053}
         m_TargetAssemblyTypeName: LevelsManager, Assembly-CSharp
-        m_MethodName: Level6
-        m_Mode: 1
+        m_MethodName: LoadLevel
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 6
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2154,12 +2154,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1911404053}
         m_TargetAssemblyTypeName: LevelsManager, Assembly-CSharp
-        m_MethodName: Level8
-        m_Mode: 1
+        m_MethodName: LoadLevel
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 8
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
