@@ -169,12 +169,18 @@ public class TutorialController : MonoBehaviour
         Stage4UI.SetActive(false);
     }
 
+    IEnumerator wait4() {
+        yield return new WaitForSeconds(4);
+    }
+
     /** Activates this stage's UI and disables all others. Freezes time. */
     private void activateStageUI(GameObject stage)
     {
         deactivateStages();
         stage.SetActive(true);
         Time.timeScale = 0f;
+        StartCoroutine(wait4());
+
     }
 
     /** Method called on click by the buttons in stage 2. */
