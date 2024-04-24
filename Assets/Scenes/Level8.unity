@@ -405,6 +405,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: 2D Scene 5
       objectReference: {fileID: 0}
+    - target: {fileID: 3828204176207326681, guid: 2756496f745983645a6e97f56a2165a3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3828204176207326681, guid: 2756496f745983645a6e97f56a2165a3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4394738588834864380, guid: 2756496f745983645a6e97f56a2165a3, type: 3}
       propertyPath: cube
       value: 
@@ -516,6 +524,14 @@ PrefabInstance:
     - target: {fileID: 2793784575521784823, guid: 31fdf3fe1b4bcf1448d4d70748de10c1, type: 3}
       propertyPath: has_gravity
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3393524273124750034, guid: 31fdf3fe1b4bcf1448d4d70748de10c1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3393524273124750034, guid: 31fdf3fe1b4bcf1448d4d70748de10c1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4.5
       objectReference: {fileID: 0}
     - target: {fileID: 5833760861442773989, guid: 31fdf3fe1b4bcf1448d4d70748de10c1, type: 3}
       propertyPath: m_TargetTexture
@@ -1645,6 +1661,14 @@ PrefabInstance:
     - target: {fileID: 343871182967159873, guid: 2756496f745983645a6e97f56a2165a3, type: 3}
       propertyPath: m_Name
       value: 2D Scene 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3828204176207326681, guid: 2756496f745983645a6e97f56a2165a3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3828204176207326681, guid: 2756496f745983645a6e97f56a2165a3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4.5
       objectReference: {fileID: 0}
     - target: {fileID: 4394738588834864380, guid: 2756496f745983645a6e97f56a2165a3, type: 3}
       propertyPath: cube
@@ -3199,6 +3223,14 @@ PrefabInstance:
     - target: {fileID: 343871182967159873, guid: 2756496f745983645a6e97f56a2165a3, type: 3}
       propertyPath: m_Name
       value: 2D Scene
+      objectReference: {fileID: 0}
+    - target: {fileID: 3828204176207326681, guid: 2756496f745983645a6e97f56a2165a3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3828204176207326681, guid: 2756496f745983645a6e97f56a2165a3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4.58
       objectReference: {fileID: 0}
     - target: {fileID: 4394738588834864380, guid: 2756496f745983645a6e97f56a2165a3, type: 3}
       propertyPath: cube

@@ -422,8 +422,12 @@ PrefabInstance:
       value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3828204176207326681, guid: 2756496f745983645a6e97f56a2165a3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3828204176207326681, guid: 2756496f745983645a6e97f56a2165a3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.06
+      value: -4.42
       objectReference: {fileID: 0}
     - target: {fileID: 4394738588834864380, guid: 2756496f745983645a6e97f56a2165a3, type: 3}
       propertyPath: cube
@@ -561,11 +565,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3393524273124750034, guid: 31fdf3fe1b4bcf1448d4d70748de10c1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3393524273124750034, guid: 31fdf3fe1b4bcf1448d4d70748de10c1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.04
+      value: -4.42
       objectReference: {fileID: 0}
     - target: {fileID: 5833760861442773989, guid: 31fdf3fe1b4bcf1448d4d70748de10c1, type: 3}
       propertyPath: m_TargetTexture
@@ -1579,8 +1583,12 @@ PrefabInstance:
       value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3828204176207326681, guid: 2756496f745983645a6e97f56a2165a3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3828204176207326681, guid: 2756496f745983645a6e97f56a2165a3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.06
+      value: -4.51
       objectReference: {fileID: 0}
     - target: {fileID: 4394738588834864380, guid: 2756496f745983645a6e97f56a2165a3, type: 3}
       propertyPath: cube
@@ -3295,11 +3303,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3828204176207326681, guid: 2756496f745983645a6e97f56a2165a3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3828204176207326681, guid: 2756496f745983645a6e97f56a2165a3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.13
+      value: -4.43
       objectReference: {fileID: 0}
     - target: {fileID: 4394738588834864380, guid: 2756496f745983645a6e97f56a2165a3, type: 3}
       propertyPath: cube

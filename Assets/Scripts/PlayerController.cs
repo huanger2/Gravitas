@@ -29,9 +29,7 @@ public class PlayerController : MonoBehaviour
 	void Awake()
 	{
 		start_loc = new Vector3(gameObject.transform.localPosition.x, 0.3f, gameObject.transform.localPosition.y);
-		gameObject.transform.localPosition = start_loc;
 		playerRB = gameObject.GetComponent<Rigidbody>();
-
 	}
 
 	void Update()
