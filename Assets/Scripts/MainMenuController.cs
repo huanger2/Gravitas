@@ -22,7 +22,7 @@ public class MainMenuController : MonoBehaviour
     }
 
     public void Quit() {
-        Application.Quit();
+        SceneManager.LoadScene("TitleScreen");
     }
     #endregion
 }
