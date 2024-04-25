@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.43667564, g: 0.48427135, b: 0.56452316, a: 1}
+  m_IndirectSpecularColor: {r: 0.4366756, g: 0.48427135, b: 0.56452316, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2372,7 +2372,7 @@ MonoBehaviour:
   m_text: 'Move all the Newts into the end zone to clear the level. If you are ever
     stuck press P to pause.
 
-    (Press any WASD key to continue)'
+    (Click end to get rid of prompt)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3964,9 +3964,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Skip
-
-'
+  m_Text: End
 --- !u!222 &1689201733
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5182,6 +5180,7 @@ MonoBehaviour:
   downArrow: {fileID: 566017160}
   player_0: {fileID: 1389237522}
   player_1: {fileID: 332893285}
+  exitcontroller: {fileID: 1699205032}
 --- !u!4 &2112299738
 Transform:
   m_ObjectHideFlags: 0

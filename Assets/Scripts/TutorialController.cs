@@ -31,6 +31,9 @@ public class TutorialController : MonoBehaviour
     public GameObject player_0;
     public GameObject player_1;
 
+    public GameObject exitcontroller;
+
+
 
 
     private void Awake()
@@ -67,6 +70,11 @@ public class TutorialController : MonoBehaviour
         } else if (!Stage5) {
             TutorialStage5();
         }
+
+        if (exitcontroller.GetComponent<ExitController>().all_exit) {
+            deactivateStages();
+        }
+
     }
 
     public void Resume()
@@ -138,7 +146,6 @@ public class TutorialController : MonoBehaviour
         activateStageUI45(Stage3UI);
         Time.timeScale = 0f;
         inStage = true;
-        StartCoroutine(wait4());
 
 
         // poll for requested behavior
@@ -160,22 +167,9 @@ public class TutorialController : MonoBehaviour
 
     public void TutorialStage5()
     {
-        activateStageUI45(Stage4UI);
-        Time.timeScale = 0f;
+        activateStageUI(Stage4UI);
         inStage = true;
         // poll for requested behavior
-        if (!completionCond)
-        {
-            completionCond = Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A)
-                || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D);
-        }
-        else
-        {
-            StartCoroutine(wait4secondsreal());
-            Stage5 = true;
-            completionCond = false;
-            Resume();
-        }
     }
 
     /** Blanket deactivates the stage UIs. */
@@ -202,7 +196,6 @@ public class TutorialController : MonoBehaviour
     {
         deactivateStages();
         stage.SetActive(true);
-        StartCoroutine(wait4());
     }
 
     private void activateStageUI45(GameObject stage)
@@ -210,7 +203,6 @@ public class TutorialController : MonoBehaviour
         deactivateStages();
         stage.SetActive(true);
         Time.timeScale = 0f;
-        StartCoroutine(wait4());
     }
 
     /** Method called on click by the buttons in stage 2. */
