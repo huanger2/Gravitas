@@ -9,16 +9,17 @@ public class TutorialController : MonoBehaviour
     public static bool Stage2;
     public static bool Stage3;
     public static bool Stage4;
+    public static bool Stage5;
+
 
     public GameObject Stage1UI;
     public GameObject Stage2UI;
     public GameObject Stage3UI;
     public GameObject Stage4UI;
+    public GameObject Stage5UI;
 
-    public GameObject upArrow;
+
     public GameObject downArrow;
-    public GameObject leftArrow;
-    public GameObject rightArrow;
 
     public static float wait;
     public static float Stage3Threshold = 150;
@@ -26,6 +27,11 @@ public class TutorialController : MonoBehaviour
     public static float DEFAULT_WAIT = 3f;
     public static bool inStage;
     public static bool completionCond;
+
+    public GameObject player_0;
+    public GameObject player_1;
+
+
 
     private void Awake()
     {
@@ -58,6 +64,8 @@ public class TutorialController : MonoBehaviour
         } else if (!Stage4)
         {
             TutorialStage4();
+        } else if (!Stage5) {
+            TutorialStage5();
         }
     }
 
@@ -73,15 +81,12 @@ public class TutorialController : MonoBehaviour
     public void TutorialStage1()
     {
         activateStageUI(Stage1UI);
-
-        Time.timeScale = 0f;
         inStage = true;
 
         // poll for requested behavior
         if (!completionCond)
         {
-            completionCond = Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A)
-                || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D);
+            completionCond = player_0.GetComponent<PlayerController>().is_exit();
         } else
         {
             Stage1 = true;
@@ -95,19 +100,13 @@ public class TutorialController : MonoBehaviour
     {
         activateStageUI(Stage2UI);
         Time.timeScale = 0f;
-        upArrow.GetComponent<Image>().color = Color.red;
         downArrow.GetComponent<Image>().color = Color.red;
-        leftArrow.GetComponent<Image>().color = Color.red;
-        rightArrow.GetComponent<Image>().color = Color.red;
         inStage = true;
 
         // poll for requested behavior
         if (completionCond)
         {
-            upArrow.GetComponent<Image>().color = Color.white;
             downArrow.GetComponent<Image>().color = Color.white;
-            leftArrow.GetComponent<Image>().color = Color.white;
-            rightArrow.GetComponent<Image>().color = Color.white;
             Stage2 = true;
             completionCond = false;
             Resume();
@@ -118,9 +117,29 @@ public class TutorialController : MonoBehaviour
      * the buttons are still usable). */
     public void TutorialStage3()
     {
-        activateStageUI(Stage3UI);
+        activateStageUI(Stage5UI);
+        inStage = true;
+
+        // poll for requested behavior
+        if (!completionCond)
+        {
+            completionCond = player_1.GetComponent<PlayerController>().is_exit();
+        } else
+        {
+            Stage3 = true;
+            completionCond = false;
+            Resume();
+        }
+    }
+
+    /** Stage 4 of the tutorial. Prompts the player to win the game, press WASD to continue. */
+    public void TutorialStage4()
+    {
+        activateStageUI45(Stage3UI);
         Time.timeScale = 0f;
         inStage = true;
+        StartCoroutine(wait4());
+
 
         // poll for requested behavior
         if (!completionCond)
@@ -133,19 +152,17 @@ public class TutorialController : MonoBehaviour
         }
         else
         {
-            Stage3 = true;
+            Stage4 = true;
             completionCond = false;
             Resume();
         }
     }
 
-    /** Stage 4 of the tutorial. Prompts the player to win the game, press WASD to continue. */
-    public void TutorialStage4()
+    public void TutorialStage5()
     {
-        activateStageUI(Stage4UI);
+        activateStageUI45(Stage4UI);
         Time.timeScale = 0f;
         inStage = true;
-
         // poll for requested behavior
         if (!completionCond)
         {
@@ -154,7 +171,8 @@ public class TutorialController : MonoBehaviour
         }
         else
         {
-            Stage4 = true;
+            StartCoroutine(wait4secondsreal());
+            Stage5 = true;
             completionCond = false;
             Resume();
         }
@@ -167,10 +185,16 @@ public class TutorialController : MonoBehaviour
         Stage2UI.SetActive(false);
         Stage3UI.SetActive(false);
         Stage4UI.SetActive(false);
+        Stage5UI.SetActive(false);
+
     }
 
     IEnumerator wait4() {
         yield return new WaitForSeconds(4);
+    }
+
+    IEnumerator wait4secondsreal() {
+        yield return new WaitForSecondsRealtime(6);
     }
 
     /** Activates this stage's UI and disables all others. Freezes time. */
@@ -178,9 +202,15 @@ public class TutorialController : MonoBehaviour
     {
         deactivateStages();
         stage.SetActive(true);
+        StartCoroutine(wait4());
+    }
+
+    private void activateStageUI45(GameObject stage)
+    {
+        deactivateStages();
+        stage.SetActive(true);
         Time.timeScale = 0f;
         StartCoroutine(wait4());
-
     }
 
     /** Method called on click by the buttons in stage 2. */
@@ -195,15 +225,13 @@ public class TutorialController : MonoBehaviour
     /** Skips the current stage. */
     public void Skip()
     {
-        upArrow.GetComponent<Image>().color = Color.white;
         downArrow.GetComponent<Image>().color = Color.white;
-        leftArrow.GetComponent<Image>().color = Color.white;
-        rightArrow.GetComponent<Image>().color = Color.white;
         completionCond = true;
         Stage1 = true;
         Stage2 = true;
         Stage3 = true;
         Stage4 = true;
+        Stage5 = true;
         Resume();
     }
 
@@ -214,6 +242,7 @@ public class TutorialController : MonoBehaviour
         Stage2 = false;
         Stage3 = false;
         Stage4 = false;
+        Stage5 = false;
         inStage = true;
         completionCond = false;
         Stage3Clicks = 0;
